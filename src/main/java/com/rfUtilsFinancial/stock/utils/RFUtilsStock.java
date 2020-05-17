@@ -33,12 +33,12 @@ public final class RFUtilsStock {
 
 	/**
 	 * Method for calculate stock turnover index. Formula to calculate is: STI =
-	 * (costprice * numberOfSoldItems) / averageStockValue
+	 * (costPrice * numberOfSoldItems) / averageStockValue
 	 * 
 	 * In this method assume math context for operations default
 	 * {@link com.rfUtilsFinancial.constants.IRFUtilsFinancialConstants#DEFAULT_MATH_CONTEXT}
 	 * 
-	 * This method dont set scale for result
+	 * This method not set scale for result
 	 * 
 	 * @param costPrice         cost price items
 	 * @param numberOfSoldItems number of sold items
@@ -60,9 +60,9 @@ public final class RFUtilsStock {
 
 	/**
 	 * Method for calculate stock turnover index. Formula to calculate is: STI =
-	 * (costprice * numberOfSoldItems) / averageStockValue
+	 * (costPrice * numberOfSoldItems) / averageStockValue
 	 * 
-	 * This method dont set scale for result
+	 * This method not set scale for result
 	 * 
 	 * @param mathContext       math context for calculate operation
 	 * @param costPrice         cost price items
@@ -75,6 +75,7 @@ public final class RFUtilsStock {
 	 *                              {@link com.rfUtilsFinancial.constants.EnumErrorCodes#NULL_VALUES}.
 	 *                              <p>
 	 *                              If averageStockValue value is zero
+	 *                               {@link com.rfUtilsFinancial.constants.EnumErrorCodes#ARITEMICAL_EXCEPTION_DIVISION_BY_ZERO}
 	 * 
 	 */
 	public static final BigDecimal stockTurnoverIndex(MathContext mathContext, BigDecimal costPrice,
