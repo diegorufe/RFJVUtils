@@ -1,2 +1,6 @@
 # RFUtilsFinancial
-financial and inventory utils
+Financial and inventory utils
+
+## Stock
+
+- Sotck turnover index = (costprice * numberOfSoldItems) / averageStockValue
