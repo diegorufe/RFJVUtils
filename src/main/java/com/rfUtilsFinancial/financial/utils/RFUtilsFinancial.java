@@ -24,7 +24,7 @@ import com.rfUtilsFinancial.log.RFUtilsLog;
  * - Methods Rate of return on investment (IRR)
  * <ul>
  * <li>{@link #calcalateIRR(BigDecimal, BigDecimal[])}</li>
- * <li>{@link #calculateNPV(MathContext, BigDecimal, BigDecimal[], BigDecimal)}</li>
+ * <li>{@link #calcalateIRR(MathContext, BigDecimal, BigDecimal[])}</li>
  * </ul>
  * 
  * @author diego
@@ -164,7 +164,7 @@ public final class RFUtilsFinancial {
 	 *                              If averageStockValue value is zero
 	 *                              {@link com.rfUtilsFinancial.constants.EnumErrorCodes#ARITEMICAL_EXCEPTION_DIVISION_BY_ZERO}
 	 */
-	private static final BigDecimal calcalateIRR(MathContext mathContext, BigDecimal initialOutlay,
+	public static final BigDecimal calcalateIRR(MathContext mathContext, BigDecimal initialOutlay,
 			BigDecimal[] netFlows) throws RFFinancialException {
 		BigDecimal result = BigDecimal.ZERO;
 

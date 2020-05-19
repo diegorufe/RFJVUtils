@@ -28,7 +28,7 @@ public interface IRFUtilsFinancialConstants {
 	public static final int DEFAULT_SCALE_PERCENT = 2;
 
 	/**
-	 * Default math contexto for calculate data.
+	 * Default math context for calculate data.
 	 * {@link #DEFAULT_PRECISION_MATH_CONTEXT} {@link #DEFAULT_ROUNDING_MODE}
 	 */
 	public static final MathContext DEFAULT_MATH_CONTEXT = new MathContext(DEFAULT_PRECISION_MATH_CONTEXT,
