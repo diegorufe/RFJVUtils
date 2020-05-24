@@ -1,4 +1,4 @@
-package com.rfUtilsMath.log;
+package com.rfUtils.log;
 
 import java.util.concurrent.CompletableFuture;
 

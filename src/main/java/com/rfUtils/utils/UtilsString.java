@@ -1,4 +1,4 @@
-package com.rfUtilsMath.utils;
+package com.rfUtils.utils;
 
 /**
  * Class utilites for String

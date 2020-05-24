@@ -1,14 +1,14 @@
-package com.rfUtilsMath.stock.utils;
+package com.rfUtils.stock.utils;
 
 import java.math.BigDecimal;
 import java.math.MathContext;
 
 import org.slf4j.Logger;
 
-import com.rfUtilsMath.constants.EnumErrorCodes;
-import com.rfUtilsMath.constants.IRFUtilsFinancialConstants;
-import com.rfUtilsMath.exceptions.RFFinancialException;
-import com.rfUtilsMath.log.RFUtilsLog;
+import com.rfUtils.constants.EnumErrorCodes;
+import com.rfUtils.constants.IRFUtilsFinancialConstants;
+import com.rfUtils.exceptions.RFFinancialException;
+import com.rfUtils.log.RFUtilsLog;
 
 /**
  * Class utilities for stock
@@ -36,7 +36,7 @@ public final class RFUtilsStock {
 	 * (costPrice * numberOfSoldItems) / averageStockValue
 	 * 
 	 * In this method assume math context for operations default
-	 * {@link com.rfUtilsMath.constants.IRFUtilsFinancialConstants#DEFAULT_MATH_CONTEXT}
+	 * {@link com.rfUtils.constants.IRFUtilsFinancialConstants#DEFAULT_MATH_CONTEXT}
 	 * 
 	 * This method not set scale for result
 	 * 
@@ -47,10 +47,10 @@ public final class RFUtilsStock {
 	 * @throws RFFinancialException
 	 *                              <p>
 	 *                              if any values is null:
-	 *                              {@link com.rfUtilsMath.constants.EnumErrorCodes#NULL_VALUES}.
+	 *                              {@link com.rfUtils.constants.EnumErrorCodes#NULL_VALUES}.
 	 *                              <p>
 	 *                              If averageStockValue value is zero
-	 *                              {@link com.rfUtilsMath.constants.EnumErrorCodes#ARITEMICAL_EXCEPTION_DIVISION_BY_ZERO}
+	 *                              {@link com.rfUtils.constants.EnumErrorCodes#ARITEMICAL_EXCEPTION_DIVISION_BY_ZERO}
 	 */
 	public static final BigDecimal stockTurnoverIndex(BigDecimal costPrice, long numberOfSoldItems,
 			BigDecimal averageStockValue) throws RFFinancialException {
@@ -72,10 +72,10 @@ public final class RFUtilsStock {
 	 * @throws RFFinancialException
 	 *                              <p>
 	 *                              if any values is null:
-	 *                              {@link com.rfUtilsMath.constants.EnumErrorCodes#NULL_VALUES}.
+	 *                              {@link com.rfUtils.constants.EnumErrorCodes#NULL_VALUES}.
 	 *                              <p>
 	 *                              If averageStockValue value is zero
-	 *                               {@link com.rfUtilsMath.constants.EnumErrorCodes#ARITEMICAL_EXCEPTION_DIVISION_BY_ZERO}
+	 *                               {@link com.rfUtils.constants.EnumErrorCodes#ARITEMICAL_EXCEPTION_DIVISION_BY_ZERO}
 	 * 
 	 */
 	public static final BigDecimal stockTurnoverIndex(MathContext mathContext, BigDecimal costPrice,

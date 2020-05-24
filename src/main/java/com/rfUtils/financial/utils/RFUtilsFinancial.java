@@ -1,4 +1,4 @@
-package com.rfUtilsMath.financial.utils;
+package com.rfUtils.financial.utils;
 
 import java.math.BigDecimal;
 import java.math.MathContext;
@@ -6,10 +6,10 @@ import java.math.RoundingMode;
 
 import org.slf4j.Logger;
 
-import com.rfUtilsMath.constants.EnumErrorCodes;
-import com.rfUtilsMath.constants.IRFUtilsFinancialConstants;
-import com.rfUtilsMath.exceptions.RFFinancialException;
-import com.rfUtilsMath.log.RFUtilsLog;
+import com.rfUtils.constants.EnumErrorCodes;
+import com.rfUtils.constants.IRFUtilsFinancialConstants;
+import com.rfUtils.exceptions.RFFinancialException;
+import com.rfUtils.log.RFUtilsLog;
 
 /**
  * Class utilities for financial operations
@@ -62,7 +62,7 @@ public final class RFUtilsFinancial {
 	 * @throws RFFinancialException
 	 *                              <p>
 	 *                              if any values is null:
-	 *                              {@link com.rfUtilsMath.constants.EnumErrorCodes#NULL_VALUES}.
+	 *                              {@link com.rfUtils.constants.EnumErrorCodes#NULL_VALUES}.
 	 */
 	public static final BigDecimal calculateNPV(BigDecimal initialOutlay, BigDecimal[] netFlows, BigDecimal interests)
 			throws RFFinancialException {
@@ -87,7 +87,7 @@ public final class RFUtilsFinancial {
 	 * @throws RFFinancialException
 	 *                              <p>
 	 *                              if any values is null:
-	 *                              {@link com.rfUtilsMath.constants.EnumErrorCodes#NULL_VALUES}.
+	 *                              {@link com.rfUtils.constants.EnumErrorCodes#NULL_VALUES}.
 	 */
 	public static final BigDecimal calculateNPV(MathContext mathContext, BigDecimal initialOutlay,
 			BigDecimal[] netFlows, BigDecimal interests) throws RFFinancialException {
@@ -133,9 +133,9 @@ public final class RFUtilsFinancial {
 	 * Method for calculate rate of return on investment (IRR)
 	 * 
 	 * Scale default IRR in find low and higth values
-	 * {@link com.rfUtilsMath.constants.IRFUtilsFinancialConstants#DEFAULT_SCALE_IRR}
+	 * {@link com.rfUtils.constants.IRFUtilsFinancialConstants#DEFAULT_SCALE_IRR}
 	 * Rounding mode default IRR scale in find low and higth values
-	 * {@link com.rfUtilsMath.constants.IRFUtilsFinancialConstants#DEFAULT_ROUNDING_MODE}
+	 * {@link com.rfUtils.constants.IRFUtilsFinancialConstants#DEFAULT_ROUNDING_MODE}
 	 * 
 	 * This method not set scale for result.
 	 * 
@@ -145,10 +145,10 @@ public final class RFUtilsFinancial {
 	 * @throws RFFinancialException
 	 *                              <p>
 	 *                              if any values is null:
-	 *                              {@link com.rfUtilsMath.constants.EnumErrorCodes#NULL_VALUES}.
+	 *                              {@link com.rfUtils.constants.EnumErrorCodes#NULL_VALUES}.
 	 *                              <p>
 	 *                              If averageStockValue value is zero
-	 *                              {@link com.rfUtilsMath.constants.EnumErrorCodes#ARITEMICAL_EXCEPTION_DIVISION_BY_ZERO}
+	 *                              {@link com.rfUtils.constants.EnumErrorCodes#ARITEMICAL_EXCEPTION_DIVISION_BY_ZERO}
 	 */
 	public static final BigDecimal calcalateIRR(BigDecimal initialOutlay, BigDecimal[] netFlows)
 			throws RFFinancialException {
@@ -167,10 +167,10 @@ public final class RFUtilsFinancial {
 	 * @throws RFFinancialException
 	 *                              <p>
 	 *                              if any values is null:
-	 *                              {@link com.rfUtilsMath.constants.EnumErrorCodes#NULL_VALUES}.
+	 *                              {@link com.rfUtils.constants.EnumErrorCodes#NULL_VALUES}.
 	 *                              <p>
 	 *                              If averageStockValue value is zero
-	 *                              {@link com.rfUtilsMath.constants.EnumErrorCodes#ARITEMICAL_EXCEPTION_DIVISION_BY_ZERO}
+	 *                              {@link com.rfUtils.constants.EnumErrorCodes#ARITEMICAL_EXCEPTION_DIVISION_BY_ZERO}
 	 */
 	public static final BigDecimal calcalateIRR(MathContext mathContext, BigDecimal initialOutlay,
 			BigDecimal[] netFlows) throws RFFinancialException {
@@ -291,7 +291,7 @@ public final class RFUtilsFinancial {
 	 * @throws RFFinancialException
 	 *                              <p>
 	 *                              if any values is null:
-	 *                              {@link com.rfUtilsMath.constants.EnumErrorCodes#NULL_VALUES}.
+	 *                              {@link com.rfUtils.constants.EnumErrorCodes#NULL_VALUES}.
 	 */
 	public static final BigDecimal calculateCompoundInterest(BigDecimal initialOutlay, BigDecimal interests, BigDecimal unitTime)
 			throws RFFinancialException {
@@ -314,7 +314,7 @@ public final class RFUtilsFinancial {
 	 * @throws RFFinancialException
 	 *                              <p>
 	 *                              if any values is null:
-	 *                              {@link com.rfUtilsMath.constants.EnumErrorCodes#NULL_VALUES}.
+	 *                              {@link com.rfUtils.constants.EnumErrorCodes#NULL_VALUES}.
 	 */
 	public static final BigDecimal calculateCompoundInterest(MathContext mathContext, BigDecimal initialOutlay,
 			BigDecimal interests, BigDecimal unitTime) throws RFFinancialException {

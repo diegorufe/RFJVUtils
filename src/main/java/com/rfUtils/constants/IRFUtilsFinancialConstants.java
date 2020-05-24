@@ -1,4 +1,4 @@
-package com.rfUtilsMath.constants;
+package com.rfUtils.constants;
 
 import java.math.BigDecimal;
 import java.math.MathContext;
