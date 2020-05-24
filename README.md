@@ -1,4 +1,4 @@
-# RFUtilsMAth
+# RFUtilsMath
 
 ## Stock
 
