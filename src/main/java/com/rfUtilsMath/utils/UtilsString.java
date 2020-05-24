@@ -1,4 +1,4 @@
-package com.rfUtilsFinancial.utils;
+package com.rfUtilsMath.utils;
 
 /**
  * Class utilites for String

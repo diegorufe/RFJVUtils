@@ -1,4 +1,4 @@
-package com.rfUtilsFinancial.constants;
+package com.rfUtilsMath.constants;
 
 /**
  * Error codes for operations
