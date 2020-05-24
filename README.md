@@ -1,6 +1,4 @@
-# RFUtilsFinancial
-
-Financial and inventory utilities
+# RFUtilsMAth
 
 ## Stock
 
