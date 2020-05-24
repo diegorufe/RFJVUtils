@@ -1,4 +1,4 @@
-package com.rfUtils.utils;
+package com.rfJVUtils.utils;
 
 /**
  * Class utilites for String

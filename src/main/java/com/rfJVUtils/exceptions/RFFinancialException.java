@@ -1,6 +1,6 @@
-package com.rfUtils.exceptions;
+package com.rfJVUtils.exceptions;
 
-import com.rfUtils.constants.EnumErrorCodes;
+import com.rfJVUtils.constants.EnumErrorCodes;
 
 /**
  * Exception for financial utils

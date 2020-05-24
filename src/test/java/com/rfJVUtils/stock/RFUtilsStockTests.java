@@ -1,4 +1,4 @@
-package com.rfUtils.stock;
+package com.rfJVUtils.stock;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -6,9 +6,9 @@ import java.math.BigDecimal;
 
 import org.junit.jupiter.api.Test;
 
-import com.rfUtils.constants.IRFUtilsFinancialConstants;
-import com.rfUtils.exceptions.RFFinancialException;
-import com.rfUtils.stock.utils.RFUtilsStock;
+import com.rfJVUtils.constants.IRFUtilsFinancialConstants;
+import com.rfJVUtils.exceptions.RFFinancialException;
+import com.rfJVUtils.stock.utils.RFUtilsStock;
 
 /**
  * Tests cases for utiliest for stock
@@ -20,7 +20,7 @@ public final class RFUtilsStockTests {
 
 	/**
 	 * Test for stockTurnoverIndex
-	 * {@link com.rfUtils.stock.utils.RFUtilsStock#stockTurnoverIndex(java.math.MathContext, java.math.BigDecimal, long, java.math.BigDecimal)}
+	 * {@link com.rfJVUtils.stock.utils.RFUtilsStock#stockTurnoverIndex(java.math.MathContext, java.math.BigDecimal, long, java.math.BigDecimal)}
 	 * @throws RFFinancialException 
 	 */
 	@Test
