@@ -52,4 +52,18 @@ public final class RFUtilsFinancialTests {
 		assertTrue(result.setScale(2, IRFUtilsFinancialConstants.DEFAULT_ROUNDING_MODE).compareTo(desireResult) == 0);
 	}
 
+	/**
+	 * Test for calculate compound interest
+	 * {@link com.rfUtilsFinancial.financial.utils.RFUtilsFinancial#calculateCompoundInterest(BigDecimal, BigDecimal, BigDecimal)}
+	 * 
+	 * @throws RFFinancialException
+	 */
+	@Test
+	public void compoundInterestTest() throws RFFinancialException {
+		BigDecimal desireResult = new BigDecimal("110.25");
+		BigDecimal result = RFUtilsFinancial.calculateCompoundInterest(new BigDecimal("100"), new BigDecimal("0.05"),
+				new BigDecimal("2"));
+		assertTrue(result.setScale(2, IRFUtilsFinancialConstants.DEFAULT_ROUNDING_MODE).compareTo(desireResult) == 0);
+	}
+
 }

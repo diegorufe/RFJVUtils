@@ -20,11 +20,19 @@ import com.rfUtilsFinancial.log.RFUtilsLog;
  * <li>{@link #calculateNPV(MathContext, BigDecimal, BigDecimal[], BigDecimal)}</li>
  * <li>{@link #calculateNPV(BigDecimal, BigDecimal[], BigDecimal)}</li>
  * </ul>
+ * 
  * <p>
  * - Methods Rate of return on investment (IRR)
  * <ul>
  * <li>{@link #calcalateIRR(BigDecimal, BigDecimal[])}</li>
  * <li>{@link #calcalateIRR(MathContext, BigDecimal, BigDecimal[])}</li>
+ * </ul>
+ * 
+ * <p>
+ * - Compound interest
+ * <ul>
+ * <li>{@link #calculateCompoundInterest(BigDecimal, BigDecimal, BigDecimal)}</li>
+ * <li>{@link #calculateCompoundInterest(MathContext, BigDecimal, BigDecimal, BigDecimal)}</li>
  * </ul>
  * 
  * @author diego
@@ -263,6 +271,71 @@ public final class RFUtilsFinancial {
 		if (LOGGER.isDebugEnabled()) {
 			LOGGER.debug("valueClotestToZeroPositiveIRR: " + valueClotestToZeroPositiveIRR.toPlainString());
 			LOGGER.debug("axisCrossing: " + axisCrossing.toPlainString());
+			LOGGER.debug("Result: " + result.toPlainString());
+		}
+
+		return result;
+	}
+
+	/**
+	 * Method for calculate compound interest
+	 * 
+	 * compound interest=initialOutlay+((1 + interest).pow(unitTime))
+	 * 
+	 * This method not set scale for result.
+	 * 
+	 * @param initialOutlay for operation
+	 * @param interests     for operation
+	 * @param unitTime      for operation
+	 * @return compound interest
+	 * @throws RFFinancialException
+	 *                              <p>
+	 *                              if any values is null:
+	 *                              {@link com.rfUtilsFinancial.constants.EnumErrorCodes#NULL_VALUES}.
+	 */
+	public static final BigDecimal calculateCompoundInterest(BigDecimal initialOutlay, BigDecimal interests, BigDecimal unitTime)
+			throws RFFinancialException {
+		return RFUtilsFinancial.calculateCompoundInterest(IRFUtilsFinancialConstants.DEFAULT_MATH_CONTEXT, initialOutlay,
+				interests, unitTime);
+	}
+
+	/**
+	 * Method for calculate compound interest
+	 * 
+	 * compound interest=initialOutlay+((1 + interest).pow(unitTime))
+	 * 
+	 * This method not set scale for result.
+	 * 
+	 * @param mathContext   math context for calculate operation
+	 * @param initialOutlay for operation
+	 * @param interests     for operation
+	 * @param unitTime      for operation
+	 * @return compound interest
+	 * @throws RFFinancialException
+	 *                              <p>
+	 *                              if any values is null:
+	 *                              {@link com.rfUtilsFinancial.constants.EnumErrorCodes#NULL_VALUES}.
+	 */
+	public static final BigDecimal calculateCompoundInterest(MathContext mathContext, BigDecimal initialOutlay,
+			BigDecimal interests, BigDecimal unitTime) throws RFFinancialException {
+		BigDecimal result = BigDecimal.ZERO;
+
+		// Throw error if any value is null
+		if (mathContext == null || initialOutlay == null || unitTime == null || interests == null) {
+			throw new RFFinancialException(EnumErrorCodes.NULL_VALUES, "Any of the values is null");
+		}
+
+		BigDecimal interestOperation = BigDecimal.ONE.add(interests);
+		interestOperation = new BigDecimal(
+				String.valueOf(Math.pow(interestOperation.doubleValue(), unitTime.doubleValue())));
+
+		if (LOGGER.isDebugEnabled()) {
+			LOGGER.debug("Interest operation: " + interestOperation.toPlainString());
+		}
+
+		result = initialOutlay.multiply(interestOperation, mathContext);
+
+		if (LOGGER.isDebugEnabled()) {
 			LOGGER.debug("Result: " + result.toPlainString());
 		}
 
