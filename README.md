@@ -1,5 +1,15 @@
 # RFJVUtils
 
+## Chars 
+
+- Constants chars: space, dot, ...
+
+## Strings
+
+- Check is empty or null
+- Check is not empty and not null
+- Ramdom string
+
 ## Collections
 
 - Check is empty or null
