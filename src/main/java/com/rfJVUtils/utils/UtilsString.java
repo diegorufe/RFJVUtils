@@ -26,6 +26,18 @@ import java.util.Random;
  * </ul>
  * 
  * <p>
+ * Replace
+ * <ul>
+ * <li>{@link #replaceAllChars(String, char, char)}</li>
+ * </ul>
+ * 
+ * <p>
+ * Contains
+ * <ul>
+ * <li>{@link #contaisChar(String, char)}</li>
+ * </ul>
+ * 
+ * <p>
  * Constants
  * <ul>
  * <li>{@link #SPACE}</li>
@@ -133,11 +145,41 @@ public final class UtilsString {
 		int rightLimit = 122; // letter 'z'
 
 		Random random = new Random();
-		StringBuilder buffer = new StringBuilder(targetStringLength);
+		StringBuilder builder = new StringBuilder(targetStringLength);
 		for (int i = 0; i < targetStringLength; i++) {
 			int randomLimitedInt = leftLimit + (int) (random.nextFloat() * (rightLimit - leftLimit + 1));
-			buffer.append((char) randomLimitedInt);
+			builder.append((char) randomLimitedInt);
 		}
-		return buffer.toString();
+		return builder.toString();
+	}
+
+	/**
+	 * Method for replace all chars in text
+	 * 
+	 * @param text        to replace
+	 * @param charReplace char to replace
+	 * @param newChar     to add
+	 * @return text with char replace if this is not empty
+	 */
+	public static final String replaceAllChars(String text, char charReplace, char newChar) {
+		if (UtilsString.isNotEmpty(text)) {
+			text = text.replace(charReplace, newChar);
+		}
+		return text;
+	}
+
+	/**
+	 * Method to check contains char
+	 * 
+	 * @param text        to check
+	 * @param charToCheck to check
+	 * @return true if char to check exists. If text is empty return false
+	 */
+	public static final boolean contaisChar(String text, char charToCheck) {
+		boolean contain = false;
+		if (UtilsString.isNotEmpty(text)) {
+			contain = text.indexOf(charToCheck) != -1;
+		}
+		return contain;
 	}
 }
