@@ -24,6 +24,26 @@ public final class UtilsReflection {
 	}
 
 	/**
+	 * Method for instance value field 
+	 * @param data 
+	 * @param fieldName
+	 * @return
+	 */
+	public final static Object instaceValueField(Object data, String fieldName) {
+		Object value = null;
+		if (data != null && UtilsString.isNotEmpty(fieldName)) {
+			try {
+				Field field = data.getClass().getDeclaredField(fieldName);
+				value = field.getType().getClass().newInstance();
+			} catch (NoSuchFieldException | SecurityException | IllegalArgumentException | IllegalAccessException
+					| InstantiationException ignored) {
+
+			}
+		}
+		return value;
+	}
+
+	/**
 	 * Method for get value field
 	 * 
 	 * @param data      to get value
