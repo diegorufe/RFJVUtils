@@ -29,6 +29,7 @@ import java.util.Random;
  * Replace
  * <ul>
  * <li>{@link #replaceAllChars(String, char, char)}</li>
+ * <li>{@link #replaceAllString(String, String, String)}</li>
  * </ul>
  * 
  * <p>
@@ -164,6 +165,21 @@ public final class UtilsString {
 	public static final String replaceAllChars(String text, char charReplace, char newChar) {
 		if (UtilsString.isNotEmpty(text)) {
 			text = text.replace(charReplace, newChar);
+		}
+		return text;
+	}
+
+	/**
+	 * Method for replace all string in text
+	 * 
+	 * @param text      to replace
+	 * @param replace   to replace
+	 * @param newString to add
+	 * @return text with String replace if this is not empty
+	 */
+	public static final String replaceAllString(String text, String replace, String newString) {
+		if (UtilsString.isNotEmpty(text) && replace != null && newString != null) {
+			text = text.replace(replace, newString);
 		}
 		return text;
 	}
