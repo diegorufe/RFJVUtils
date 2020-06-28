@@ -40,7 +40,7 @@ public final class UtilsReflection {
 				value = field.getType().getClass().newInstance();
 			} catch (NoSuchFieldException | SecurityException | IllegalArgumentException | IllegalAccessException
 					| InstantiationException ignored) {
-				if (!data.getClass().getSuperclass().getSimpleName().equals(Object.class.getSimpleName())) {
+				if (classData.getSuperclass() != Object.class) {
 					value = instaceValueField(data, data.getClass().getSuperclass(), fieldName);
 				}
 			}
@@ -66,7 +66,7 @@ public final class UtilsReflection {
 				value = field.get(data);
 			} catch (NoSuchFieldException | SecurityException | IllegalArgumentException
 					| IllegalAccessException ignored) {
-				if (!data.getClass().getSuperclass().getSimpleName().equals(Object.class.getSimpleName())) {
+				if (classData.getSuperclass() != Object.class) {
 					value = getValueField(data, data.getClass().getSuperclass(), fieldName);
 				}
 			}
@@ -91,7 +91,7 @@ public final class UtilsReflection {
 				field.set(data, value);
 			} catch (NoSuchFieldException | SecurityException | IllegalArgumentException
 					| IllegalAccessException ignored) {
-				if (!data.getClass().getSuperclass().getSimpleName().equals(Object.class.getSimpleName())) {
+				if (classData.getSuperclass() != Object.class) {
 					setValueField(data, data.getClass().getSuperclass(), fieldName, value);
 				}
 			}
