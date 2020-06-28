@@ -13,6 +13,7 @@ package com.rfJVUtils.utils;
  * <li>{@link #DOT}</li>
  * <li>{@link #COMA}</li>
  * <li>{@link #LOW_BAR}</li>
+ * <li>{@link #ASTERISK}</li>
  * </ul>
  * 
  * @author diego
@@ -53,6 +54,11 @@ public final class UtilsChar {
 	 * Low bar -> "_"
 	 */
 	public static final char LOW_BAR = '_';
+
+	/**
+	 * Asterisk -> "*"
+	 */
+	public static final char ASTERISK = '*';
 
 	private UtilsChar() {
 
