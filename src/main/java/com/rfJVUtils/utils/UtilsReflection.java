@@ -10,8 +10,9 @@ import java.lang.reflect.Type;
  * <p>
  * Fields
  * <ul>
- * <li>{@link #getValueField(Object, String)}</li>
- * <li>{@link #setValueField(Object, String, Object)}</li>
+ * <li>{@link #getValueField(Object, Class, String)}</li>
+ * <li>{@link #setValueField(Object, Class, String, Object)}</li>
+ * <li>{@link #instaceValueField(Object, Class, String)}</li>
  * </ul>
  * 
  * @author diego
@@ -24,12 +25,14 @@ public final class UtilsReflection {
 	}
 
 	/**
-	 * Method for instance value field 
-	 * @param data 
+	 * Method for instance value field
+	 * 
+	 * @param data
 	 * @param fieldName
 	 * @return
 	 */
-	public final static Object instaceValueField(Object data, String fieldName) {
+	public final static Object instaceValueField(Object data, @SuppressWarnings("rawtypes") Class classData,
+			String fieldName) {
 		Object value = null;
 		if (data != null && UtilsString.isNotEmpty(fieldName)) {
 			try {
@@ -37,7 +40,9 @@ public final class UtilsReflection {
 				value = field.getType().getClass().newInstance();
 			} catch (NoSuchFieldException | SecurityException | IllegalArgumentException | IllegalAccessException
 					| InstantiationException ignored) {
-
+				if (data.getClass().getSuperclass() != Object.class) {
+					value = instaceValueField(data, data.getClass().getSuperclass(), fieldName);
+				}
 			}
 		}
 		return value;
@@ -48,17 +53,22 @@ public final class UtilsReflection {
 	 * 
 	 * @param data      to get value
 	 * @param fieldName to get data for value
+	 * @param classData to get data for value
 	 * @return value for field exits
 	 */
-	public final static Object getValueField(Object data, String fieldName) {
+	public final static Object getValueField(Object data, @SuppressWarnings("rawtypes") Class classData,
+			String fieldName) {
 		Object value = null;
 		if (data != null && UtilsString.isNotEmpty(fieldName)) {
+			Field field = null;
 			try {
-				Field field = data.getClass().getDeclaredField(fieldName);
+				field = classData.getDeclaredField(fieldName);
 				value = field.get(data);
 			} catch (NoSuchFieldException | SecurityException | IllegalArgumentException
 					| IllegalAccessException ignored) {
-
+				if (data.getClass().getSuperclass() != Object.class) {
+					value = getValueField(data, data.getClass().getSuperclass(), fieldName);
+				}
 			}
 		}
 		return value;
@@ -68,17 +78,21 @@ public final class UtilsReflection {
 	 * Method for set value field
 	 * 
 	 * @param data      to set value
+	 * @param classData to get data for value
 	 * @param fieldName to set value
 	 * @param value     to set in data
 	 */
-	public final static void setValueField(Object data, String fieldName, Object value) {
+	public final static void setValueField(Object data, @SuppressWarnings("rawtypes") Class classData, String fieldName,
+			Object value) {
 		if (data != null && UtilsString.isNotEmpty(fieldName)) {
 			try {
 				Field field = data.getClass().getDeclaredField(fieldName);
 				field.set(data, value);
 			} catch (NoSuchFieldException | SecurityException | IllegalArgumentException
 					| IllegalAccessException ignored) {
-
+				if (data.getClass().getSuperclass() != Object.class) {
+					setValueField(data, data.getClass().getSuperclass(), fieldName, value);
+				}
 			}
 		}
 	}
