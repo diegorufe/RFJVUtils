@@ -40,7 +40,7 @@ public final class UtilsReflection {
 				value = field.getType().getClass().newInstance();
 			} catch (NoSuchFieldException | SecurityException | IllegalArgumentException | IllegalAccessException
 					| InstantiationException ignored) {
-				if (data.getClass().getSuperclass() != Object.class) {
+				if (!data.getClass().getSuperclass().getSimpleName().equals(Object.class.getSimpleName())) {
 					value = instaceValueField(data, data.getClass().getSuperclass(), fieldName);
 				}
 			}
@@ -60,13 +60,13 @@ public final class UtilsReflection {
 			String fieldName) {
 		Object value = null;
 		if (data != null && UtilsString.isNotEmpty(fieldName)) {
-			Field field = null;
 			try {
-				field = classData.getDeclaredField(fieldName);
+				Field field = classData.getDeclaredField(fieldName);
+				field.setAccessible(true);
 				value = field.get(data);
 			} catch (NoSuchFieldException | SecurityException | IllegalArgumentException
 					| IllegalAccessException ignored) {
-				if (data.getClass().getSuperclass() != Object.class) {
+				if (!data.getClass().getSuperclass().getSimpleName().equals(Object.class.getSimpleName())) {
 					value = getValueField(data, data.getClass().getSuperclass(), fieldName);
 				}
 			}
@@ -87,10 +87,11 @@ public final class UtilsReflection {
 		if (data != null && UtilsString.isNotEmpty(fieldName)) {
 			try {
 				Field field = data.getClass().getDeclaredField(fieldName);
+				field.setAccessible(true);
 				field.set(data, value);
 			} catch (NoSuchFieldException | SecurityException | IllegalArgumentException
 					| IllegalAccessException ignored) {
-				if (data.getClass().getSuperclass() != Object.class) {
+				if (!data.getClass().getSuperclass().getSimpleName().equals(Object.class.getSimpleName())) {
 					setValueField(data, data.getClass().getSuperclass(), fieldName, value);
 				}
 			}
