@@ -1,6 +1,7 @@
 package com.rfJVUtils.utils;
 
 import java.util.Random;
+import java.util.UUID;
 
 /**
  * Class utilites for String
@@ -23,6 +24,7 @@ import java.util.Random;
  * Random
  * <ul>
  * <li>{@link #ramdomString(int)}</li>
+ * <li>{@link #uniquedId()}</li>
  * </ul>
  * 
  * <p>
@@ -197,5 +199,14 @@ public final class UtilsString {
 			contain = text.indexOf(charToCheck) != -1;
 		}
 		return contain;
+	}
+
+	/**
+	 * Method for generate unique id
+	 * 
+	 * @return unique id
+	 */
+	public static final String uniquedId() {
+		return UUID.randomUUID().toString().concat(UUID.randomUUID().toString());
 	}
 }
