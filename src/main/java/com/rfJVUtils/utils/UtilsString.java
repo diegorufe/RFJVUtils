@@ -24,7 +24,7 @@ import java.util.UUID;
  * Random
  * <ul>
  * <li>{@link #ramdomString(int)}</li>
- * <li>{@link #uniquedId()}</li>
+ * <li>{@link #uniqueId()}</li>
  * </ul>
  * 
  * <p>
@@ -206,7 +206,7 @@ public final class UtilsString {
 	 * 
 	 * @return unique id
 	 */
-	public static final String uniquedId() {
+	public static final String uniqueId() {
 		return UUID.randomUUID().toString().concat(UUID.randomUUID().toString());
 	}
 }
