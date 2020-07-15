@@ -60,6 +60,7 @@ public final class UtilsClass {
 	 * @param packageName to get all classes
 	 * @return array for classes inside package name
 	 */
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public final static Class[] getAllClasses(String packageName) {
 		try {
 			ArrayList classes = new ArrayList();
