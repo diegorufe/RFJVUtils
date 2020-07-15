@@ -1,4 +1,4 @@
-package com.rfJVUtils.log;
+package com.rfJVUtils.utils;
 
 import java.util.concurrent.CompletableFuture;
 

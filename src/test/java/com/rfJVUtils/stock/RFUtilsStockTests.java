@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 
 import com.rfJVUtils.constants.IRFUtilsFinancialConstants;
 import com.rfJVUtils.exceptions.RFFinancialException;
-import com.rfJVUtils.stock.utils.RFUtilsStock;
+import com.rfJVUtils.utils.RFUtilsStock;
 
 /**
  * Tests cases for utiliest for stock
@@ -20,7 +20,7 @@ public final class RFUtilsStockTests {
 
 	/**
 	 * Test for stockTurnoverIndex
-	 * {@link com.rfJVUtils.stock.utils.RFUtilsStock#stockTurnoverIndex(java.math.MathContext, java.math.BigDecimal, long, java.math.BigDecimal)}
+	 * {@link com.rfJVUtils.utils.RFUtilsStock#stockTurnoverIndex(java.math.MathContext, java.math.BigDecimal, long, java.math.BigDecimal)}
 	 * @throws RFFinancialException 
 	 */
 	@Test

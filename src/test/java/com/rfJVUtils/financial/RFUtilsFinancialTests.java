@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 
 import com.rfJVUtils.constants.IRFUtilsFinancialConstants;
 import com.rfJVUtils.exceptions.RFFinancialException;
-import com.rfJVUtils.financial.utils.RFUtilsFinancial;
+import com.rfJVUtils.utils.RFUtilsFinancial;
 
 /**
  * Tests cases for utilities for financial
@@ -21,7 +21,7 @@ public final class RFUtilsFinancialTests {
 
 	/**
 	 * Test for calculateNPV
-	 * {@link com.rfJVUtils.financial.utils.RFUtilsFinancial#calculateNPV(BigDecimal, BigDecimal[], BigDecimal)}
+	 * {@link com.rfJVUtils.utils.RFUtilsFinancial#calculateNPV(BigDecimal, BigDecimal[], BigDecimal)}
 	 * 
 	 * @throws RFFinancialException
 	 */
@@ -35,7 +35,7 @@ public final class RFUtilsFinancialTests {
 
 	/**
 	 * Test for calcauteIRR
-	 * {@link com.rfJVUtils.financial.utils.RFUtilsFinancial#calcalateIRR(BigDecimal, BigDecimal[])}
+	 * {@link com.rfJVUtils.utils.RFUtilsFinancial#calcalateIRR(BigDecimal, BigDecimal[])}
 	 * 
 	 * @throws RFFinancialException
 	 */
@@ -54,7 +54,7 @@ public final class RFUtilsFinancialTests {
 
 	/**
 	 * Test for calculate compound interest
-	 * {@link com.rfJVUtils.financial.utils.RFUtilsFinancial#calculateCompoundInterest(BigDecimal, BigDecimal, BigDecimal)}
+	 * {@link com.rfJVUtils.utils.RFUtilsFinancial#calculateCompoundInterest(BigDecimal, BigDecimal, BigDecimal)}
 	 * 
 	 * @throws RFFinancialException
 	 */
