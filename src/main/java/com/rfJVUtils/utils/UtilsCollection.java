@@ -10,6 +10,8 @@ import java.util.Collection;
  * <ul>
  * <li>{@link #isEmpty(Collection)}</li>
  * <li>{@link #isNotEmpty(Collection)}</li>
+ * <li>{@link #isArrayEmpty(Object[])}</li>
+ * <li>{@link #isArrayNotEmpty(Object[])}</li>
  * </ul>
  * 
  * @author diego
@@ -43,5 +45,28 @@ public final class UtilsCollection {
 	@SuppressWarnings("rawtypes")
 	public static final boolean isNotEmpty(Collection collection) {
 		return !UtilsCollection.isEmpty(collection);
+	}
+
+	/**
+	 * Method to check array is empty. Condictions for know is null or empty
+	 * 
+	 * @param <T>
+	 * @param array to check
+	 * @return true if array is null or is empty
+	 */
+	public static final <T> boolean isArrayEmpty(T[] array) {
+		return array == null || array.length == 0;
+	}
+
+	/**
+	 * Method to check array is not empty. Condictions for know is not null and not
+	 * empty
+	 * 
+	 * @param <T>
+	 * @param array to check
+	 * @return true if array is not null and not empty
+	 */
+	public static final <T> boolean isArrayNotEmpty(T[] array) {
+		return !UtilsCollection.isArrayEmpty(array);
 	}
 }

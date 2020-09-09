@@ -3,6 +3,8 @@ package com.rfJVUtils.utils;
 import java.lang.reflect.Field;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Utilities for reflection
@@ -13,6 +15,7 @@ import java.lang.reflect.Type;
  * <li>{@link #getValueField(Object, Class, String)}</li>
  * <li>{@link #setValueField(Object, Class, String, Object)}</li>
  * <li>{@link #instaceValueField(Object, Class, String)}</li>
+ * <li>{@link #getListDeclaredFields(Class)}</li>
  * </ul>
  * 
  * @author diego
@@ -22,6 +25,29 @@ public final class UtilsReflection {
 
 	private UtilsReflection() {
 
+	}
+
+	/**
+	 * Method for get list declared fields
+	 * 
+	 * @param classData to get declared fields
+	 * @return list of declared fields from class. Never returns null
+	 */
+	public final static List<Field> getListDeclaredFields(@SuppressWarnings("rawtypes") Class classData) {
+		List<Field> listDeclaredFields = new ArrayList<Field>();
+		if (classData != null) {
+			Field[] arrFields = classData.getDeclaredFields();
+			if (UtilsCollection.isArrayNotEmpty(arrFields)) {
+				for (Field field : arrFields) {
+					listDeclaredFields.add(field);
+				}
+			}
+			// Get declared fields for superclass
+			if (classData.getSuperclass() != Object.class) {
+				listDeclaredFields.addAll(UtilsReflection.getListDeclaredFields(classData.getSuperclass()));
+			}
+		}
+		return listDeclaredFields;
 	}
 
 	/**
