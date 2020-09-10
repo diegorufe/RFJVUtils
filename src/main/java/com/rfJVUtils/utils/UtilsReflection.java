@@ -112,7 +112,7 @@ public final class UtilsReflection {
 			Object value) {
 		if (data != null && UtilsString.isNotEmpty(fieldName)) {
 			try {
-				Field field = data.getClass().getDeclaredField(fieldName);
+				Field field = classData.getDeclaredField(fieldName);
 				field.setAccessible(true);
 				field.set(data, value);
 			} catch (NoSuchFieldException | SecurityException | IllegalArgumentException
