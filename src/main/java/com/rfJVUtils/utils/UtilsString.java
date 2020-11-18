@@ -56,6 +56,11 @@ import java.util.UUID;
  *
  */
 public final class UtilsString {
+	
+	/**
+	 * Empty -> " "
+	 */
+	public static final String EMPTY = "";
 
 	/**
 	 * Space value -> " "
