@@ -5,8 +5,8 @@ import java.math.MathContext;
 
 import org.slf4j.Logger;
 
-import com.rfJVUtils.constants.EnumErrorCodes;
-import com.rfJVUtils.constants.IRFUtilsFinancialConstants;
+import com.rfJVUtils.constants.core.EnumErrorCodes;
+import com.rfJVUtils.constants.financial.IRFUtilsFinancialConstants;
 import com.rfJVUtils.exceptions.RFFinancialException;
 
 /**
@@ -22,11 +22,11 @@ import com.rfJVUtils.exceptions.RFFinancialException;
  * @author diego
  *
  */
-public final class RFUtilsStock {
+public final class UtilsStock {
 
-	private static final Logger LOGGER = RFUtilsLog.getLogger(RFUtilsStock.class.getSimpleName());
+	private static final Logger LOGGER = UtilsLog.getLogger(UtilsStock.class.getSimpleName());
 
-	private RFUtilsStock() {
+	private UtilsStock() {
 
 	}
 
@@ -35,7 +35,7 @@ public final class RFUtilsStock {
 	 * (costPrice * numberOfSoldItems) / averageStockValue
 	 * 
 	 * In this method assume math context for operations default
-	 * {@link com.rfJVUtils.constants.IRFUtilsFinancialConstants#DEFAULT_MATH_CONTEXT}
+	 * {@link com.rfJVUtils.constants.financial.IRFUtilsFinancialConstants#DEFAULT_MATH_CONTEXT}
 	 * 
 	 * This method not set scale for result
 	 * 
@@ -46,14 +46,14 @@ public final class RFUtilsStock {
 	 * @throws RFFinancialException
 	 *                              <p>
 	 *                              if any values is null:
-	 *                              {@link com.rfJVUtils.constants.EnumErrorCodes#NULL_VALUES}.
+	 *                              {@link com.rfJVUtils.constants.core.EnumErrorCodes#NULL_VALUES}.
 	 *                              <p>
 	 *                              If averageStockValue value is zero
-	 *                              {@link com.rfJVUtils.constants.EnumErrorCodes#ARITEMICAL_EXCEPTION_DIVISION_BY_ZERO}
+	 *                              {@link com.rfJVUtils.constants.core.EnumErrorCodes#ARITEMICAL_EXCEPTION_DIVISION_BY_ZERO}
 	 */
 	public static final BigDecimal stockTurnoverIndex(BigDecimal costPrice, long numberOfSoldItems,
 			BigDecimal averageStockValue) throws RFFinancialException {
-		return RFUtilsStock.stockTurnoverIndex(IRFUtilsFinancialConstants.DEFAULT_MATH_CONTEXT, costPrice,
+		return UtilsStock.stockTurnoverIndex(IRFUtilsFinancialConstants.DEFAULT_MATH_CONTEXT, costPrice,
 				numberOfSoldItems, averageStockValue);
 	}
 
@@ -71,10 +71,10 @@ public final class RFUtilsStock {
 	 * @throws RFFinancialException
 	 *                              <p>
 	 *                              if any values is null:
-	 *                              {@link com.rfJVUtils.constants.EnumErrorCodes#NULL_VALUES}.
+	 *                              {@link com.rfJVUtils.constants.core.EnumErrorCodes#NULL_VALUES}.
 	 *                              <p>
 	 *                              If averageStockValue value is zero
-	 *                               {@link com.rfJVUtils.constants.EnumErrorCodes#ARITEMICAL_EXCEPTION_DIVISION_BY_ZERO}
+	 *                               {@link com.rfJVUtils.constants.core.EnumErrorCodes#ARITEMICAL_EXCEPTION_DIVISION_BY_ZERO}
 	 * 
 	 */
 	public static final BigDecimal stockTurnoverIndex(MathContext mathContext, BigDecimal costPrice,

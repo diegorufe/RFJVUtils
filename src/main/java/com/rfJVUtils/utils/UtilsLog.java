@@ -12,7 +12,7 @@ import org.slf4j.event.Level;
  * @author diego
  *
  */
-public class RFUtilsLog {
+public class UtilsLog {
 
 	/**
 	 * Method for get logger wiht tag
@@ -26,25 +26,25 @@ public class RFUtilsLog {
 
 	public static void sendDebugLogAsync(final Logger logger, final String log) {
 		if (logger.isDebugEnabled()) {
-			RFUtilsLog.sendLogAsync(Level.DEBUG, logger, log);
+			UtilsLog.sendLogAsync(Level.DEBUG, logger, log);
 		}
 	}
 
 	public static void sendInfoLogAsync(final Logger logger, final String log) {
 		if (logger.isInfoEnabled()) {
-			RFUtilsLog.sendLogAsync(Level.INFO, logger, log);
+			UtilsLog.sendLogAsync(Level.INFO, logger, log);
 		}
 	}
 
 	public static void sendErrorLogAsync(final Logger logger, final String log) {
 		if (logger.isErrorEnabled()) {
-			RFUtilsLog.sendLogAsync(Level.ERROR, logger, log);
+			UtilsLog.sendLogAsync(Level.ERROR, logger, log);
 		}
 	}
 
 	public static void sendTraceLogAsync(final Logger logger, final String log) {
 		if (logger.isTraceEnabled()) {
-			RFUtilsLog.sendLogAsync(Level.TRACE, logger, log);
+			UtilsLog.sendLogAsync(Level.TRACE, logger, log);
 		}
 	}
 
@@ -83,7 +83,7 @@ public class RFUtilsLog {
 				}
 			});
 		} else {
-			RFUtilsLog.sendErrorLogAsync(logger, "Log message is empty or null");
+			UtilsLog.sendErrorLogAsync(logger, "Log message is empty or null");
 		}
 	}
 }

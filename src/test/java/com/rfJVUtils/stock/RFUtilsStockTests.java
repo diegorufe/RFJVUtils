@@ -6,9 +6,9 @@ import java.math.BigDecimal;
 
 import org.junit.jupiter.api.Test;
 
-import com.rfJVUtils.constants.IRFUtilsFinancialConstants;
+import com.rfJVUtils.constants.financial.IRFUtilsFinancialConstants;
 import com.rfJVUtils.exceptions.RFFinancialException;
-import com.rfJVUtils.utils.RFUtilsStock;
+import com.rfJVUtils.utils.UtilsStock;
 
 /**
  * Tests cases for utiliest for stock
@@ -20,7 +20,7 @@ public final class RFUtilsStockTests {
 
 	/**
 	 * Test for stockTurnoverIndex
-	 * {@link com.rfJVUtils.utils.RFUtilsStock#stockTurnoverIndex(java.math.MathContext, java.math.BigDecimal, long, java.math.BigDecimal)}
+	 * {@link com.rfJVUtils.utils.UtilsStock#stockTurnoverIndex(java.math.MathContext, java.math.BigDecimal, long, java.math.BigDecimal)}
 	 * @throws RFFinancialException 
 	 */
 	@Test
@@ -30,7 +30,7 @@ public final class RFUtilsStockTests {
 		long numberOfSoldItems = 1500;
 		BigDecimal averageStockValue = new BigDecimal("1.55", IRFUtilsFinancialConstants.DEFAULT_MATH_CONTEXT);
 		assertTrue(
-				desireResult.compareTo(RFUtilsStock.stockTurnoverIndex(costPrice, numberOfSoldItems, averageStockValue)
+				desireResult.compareTo(UtilsStock.stockTurnoverIndex(costPrice, numberOfSoldItems, averageStockValue)
 						.setScale(2, IRFUtilsFinancialConstants.DEFAULT_ROUNDING_MODE)) == 0);
 	}
 

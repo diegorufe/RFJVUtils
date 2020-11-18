@@ -1,4 +1,4 @@
-package com.rfJVUtils.constants;
+package com.rfJVUtils.constants.core;
 
 /**
  * Error codes for operations
