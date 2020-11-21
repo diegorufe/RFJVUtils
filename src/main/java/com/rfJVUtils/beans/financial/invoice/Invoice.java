@@ -1,7 +1,9 @@
 package com.rfJVUtils.beans.financial.invoice;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import com.rfJVUtils.utils.UtilsCollection;
@@ -26,6 +28,8 @@ public class Invoice implements Serializable {
 
 	private InvoiceHeader invoiceHeader;
 	private List<InvoiceLine> listInvoiceLines;
+	private BigDecimal amountInvoiceWithoutTaxesAndDiscount;
+	private Date lastDateExecuteCalculateInvoice;
 
 	public Invoice() {
 
@@ -69,6 +73,24 @@ public class Invoice implements Serializable {
 			this.listInvoiceLines.clear();
 		}
 		this.invoiceHeader = null;
+		this.lastDateExecuteCalculateInvoice = null;
+		this.amountInvoiceWithoutTaxesAndDiscount = null;
+	}
+
+	public Date getLastDateExecuteCalculateInvoice() {
+		return lastDateExecuteCalculateInvoice;
+	}
+
+	public void setLastDateExecuteCalculateInvoice(Date lastDateExecuteCalculateInvoice) {
+		this.lastDateExecuteCalculateInvoice = lastDateExecuteCalculateInvoice;
+	}
+
+	public BigDecimal getAmountInvoiceWithoutTaxesAndDiscount() {
+		return amountInvoiceWithoutTaxesAndDiscount;
+	}
+
+	public void setAmountInvoiceWithoutTaxesAndDiscount(BigDecimal amountInvoiceWithoutTaxesAndDiscount) {
+		this.amountInvoiceWithoutTaxesAndDiscount = amountInvoiceWithoutTaxesAndDiscount;
 	}
 
 }

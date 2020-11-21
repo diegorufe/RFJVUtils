@@ -82,12 +82,12 @@ public final class UtilsStock {
 
 		// Throw error if any value is null
 		if (mathContext == null || costPrice == null || averageStockValue == null) {
-			throw new RFFinancialException(EnumErrorCodes.NULL_VALUES, "Any of the values is null");
+			throw new RFFinancialException(EnumErrorCodes.NULL_VALUES.getCode(), "Any of the values is null");
 		}
 
 		// Throw error if averageStockValue is zero
 		if (averageStockValue.compareTo(BigDecimal.ZERO) == 0) {
-			throw new RFFinancialException(EnumErrorCodes.ARITEMICAL_EXCEPTION_DIVISION_BY_ZERO,
+			throw new RFFinancialException(EnumErrorCodes.ARITEMICAL_EXCEPTION_DIVISION_BY_ZERO.getCode(),
 					"AverageStockValue for division is zero. Error aritemical division.");
 		}
 

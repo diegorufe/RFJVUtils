@@ -3,8 +3,6 @@ package com.rfJVUtils.beans.financial.core;
 import java.io.Serializable;
 import java.math.BigDecimal;
 
-import com.rfJVUtils.constants.financial.EnumDiscountTypes;
-
 /**
  * Discount. If amount is not null apply this for discount percentage
  * 
@@ -22,10 +20,8 @@ public class Discount implements Serializable {
 
 	private BigDecimal amount;
 
-	private EnumDiscountTypes discountType;
-
 	public Discount() {
-		this.discountType = EnumDiscountTypes.TAX_BASE;
+
 	}
 
 	public BigDecimal getPercentage() {
@@ -42,14 +38,6 @@ public class Discount implements Serializable {
 
 	public void setAmount(BigDecimal amount) {
 		this.amount = amount;
-	}
-
-	public EnumDiscountTypes getDiscountType() {
-		return discountType;
-	}
-
-	public void setDiscountType(EnumDiscountTypes discountType) {
-		this.discountType = discountType;
 	}
 
 }

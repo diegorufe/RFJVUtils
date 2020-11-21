@@ -43,5 +43,12 @@ public interface IRFUtilsFinancialConstants {
 	 * Default scale IRR
 	 */
 	public static final int DEFAULT_SCALE_IRR = 2;
+	
+	/**
+	 * Default scale total amount
+	 */
+	public static final int DEFAULT_SCALE_TOTAL_AMOUNT = 2;
+	
+
 
 }

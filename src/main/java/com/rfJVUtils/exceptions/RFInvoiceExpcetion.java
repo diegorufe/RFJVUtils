@@ -6,18 +6,18 @@ package com.rfJVUtils.exceptions;
  * @author diego
  *
  */
-public class RFFinancialException extends RFException {
+public class RFInvoiceExpcetion extends RFException {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = -4728414523437010498L;
 
-	public RFFinancialException(int errorCode) {
+	public RFInvoiceExpcetion(int errorCode) {
 		super(errorCode);
 	}
 
-	public RFFinancialException(int errorCode, String message) {
+	public RFInvoiceExpcetion(int errorCode, String message) {
 		super(errorCode, message);
 	}
 

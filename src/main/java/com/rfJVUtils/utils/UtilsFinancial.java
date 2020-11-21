@@ -94,7 +94,7 @@ public final class UtilsFinancial {
 
 		// Throw error if any value is null
 		if (mathContext == null || initialOutlay == null || netFlows == null) {
-			throw new RFFinancialException(EnumErrorCodes.NULL_VALUES, "Any of the values is null");
+			throw new RFFinancialException(EnumErrorCodes.NULL_VALUES.getCode(), "Any of the values is null");
 		}
 
 		if (LOGGER.isDebugEnabled()) {
@@ -106,7 +106,7 @@ public final class UtilsFinancial {
 
 			// throw error if any netflow is null
 			if (netFlows[i] == null) {
-				throw new RFFinancialException(EnumErrorCodes.NULL_VALUES, "Any of the values is null");
+				throw new RFFinancialException(EnumErrorCodes.NULL_VALUES.getCode(), "Any of the values is null");
 			}
 
 			if (LOGGER.isDebugEnabled()) {
@@ -177,12 +177,12 @@ public final class UtilsFinancial {
 
 		// Throw error if any value is null
 		if (mathContext == null || initialOutlay == null || netFlows == null) {
-			throw new RFFinancialException(EnumErrorCodes.NULL_VALUES, "Any of the values is null");
+			throw new RFFinancialException(EnumErrorCodes.NULL_VALUES.getCode(), "Any of the values is null");
 		}
 
 		// Throw error if initialOutlay is cero
 		if (initialOutlay.compareTo(BigDecimal.ZERO) == 0) {
-			throw new RFFinancialException(EnumErrorCodes.ARITEMICAL_EXCEPTION_DIVISION_BY_ZERO,
+			throw new RFFinancialException(EnumErrorCodes.ARITEMICAL_EXCEPTION_DIVISION_BY_ZERO.getCode(),
 					"InitailOutlay musbe greater than 0");
 		}
 
@@ -194,7 +194,7 @@ public final class UtilsFinancial {
 		for (int i = 0; i < netFlows.length; i++) {
 			// Throw error if netflow is zero
 			if (netFlows[i].compareTo(BigDecimal.ZERO) == 0) {
-				throw new RFFinancialException(EnumErrorCodes.ARITEMICAL_EXCEPTION_DIVISION_BY_ZERO,
+				throw new RFFinancialException(EnumErrorCodes.ARITEMICAL_EXCEPTION_DIVISION_BY_ZERO.getCode(),
 						"NetFlow for division is zero. Error aritemical division.");
 			}
 			valueSumNetFlow = valueSumNetFlow.add(netFlows[i]);
@@ -292,8 +292,8 @@ public final class UtilsFinancial {
 	 *                              if any values is null:
 	 *                              {@link com.rfJVUtils.constants.core.EnumErrorCodes#NULL_VALUES}.
 	 */
-	public static final BigDecimal calculateCompoundInterest(BigDecimal initialOutlay, BigDecimal interests, BigDecimal unitTime)
-			throws RFFinancialException {
+	public static final BigDecimal calculateCompoundInterest(BigDecimal initialOutlay, BigDecimal interests,
+			BigDecimal unitTime) throws RFFinancialException {
 		return UtilsFinancial.calculateCompoundInterest(IRFUtilsFinancialConstants.DEFAULT_MATH_CONTEXT, initialOutlay,
 				interests, unitTime);
 	}
@@ -321,7 +321,7 @@ public final class UtilsFinancial {
 
 		// Throw error if any value is null
 		if (mathContext == null || initialOutlay == null || unitTime == null || interests == null) {
-			throw new RFFinancialException(EnumErrorCodes.NULL_VALUES, "Any of the values is null");
+			throw new RFFinancialException(EnumErrorCodes.NULL_VALUES.getCode(), "Any of the values is null");
 		}
 
 		BigDecimal interestOperation = BigDecimal.ONE.add(interests);
