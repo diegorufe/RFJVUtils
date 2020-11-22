@@ -28,7 +28,7 @@ public class Invoice implements Serializable {
 
 	private InvoiceHeader invoiceHeader;
 	private List<InvoiceLine> listInvoiceLines;
-	private BigDecimal amountInvoiceWithoutTaxesAndDiscount;
+	private BigDecimal amountInvoiceWithoutTaxesAndDiscountHeader;
 	private Date lastDateExecuteCalculateInvoice;
 
 	public Invoice() {
@@ -74,7 +74,7 @@ public class Invoice implements Serializable {
 		}
 		this.invoiceHeader = null;
 		this.lastDateExecuteCalculateInvoice = null;
-		this.amountInvoiceWithoutTaxesAndDiscount = null;
+		this.amountInvoiceWithoutTaxesAndDiscountHeader = null;
 	}
 
 	public Date getLastDateExecuteCalculateInvoice() {
@@ -85,12 +85,12 @@ public class Invoice implements Serializable {
 		this.lastDateExecuteCalculateInvoice = lastDateExecuteCalculateInvoice;
 	}
 
-	public BigDecimal getAmountInvoiceWithoutTaxesAndDiscount() {
-		return amountInvoiceWithoutTaxesAndDiscount;
+	public BigDecimal getAmountInvoiceWithoutTaxesAndDiscountHeader() {
+		return amountInvoiceWithoutTaxesAndDiscountHeader;
 	}
 
-	public void setAmountInvoiceWithoutTaxesAndDiscount(BigDecimal amountInvoiceWithoutTaxesAndDiscount) {
-		this.amountInvoiceWithoutTaxesAndDiscount = amountInvoiceWithoutTaxesAndDiscount;
+	public void setAmountInvoiceWithoutTaxesAndDiscountHeader(BigDecimal amountInvoiceWithoutTaxesAndDiscountHeader) {
+		this.amountInvoiceWithoutTaxesAndDiscountHeader = amountInvoiceWithoutTaxesAndDiscountHeader;
 	}
 
 }

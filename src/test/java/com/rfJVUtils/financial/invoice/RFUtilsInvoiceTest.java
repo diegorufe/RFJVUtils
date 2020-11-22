@@ -7,6 +7,7 @@ import java.math.BigDecimal;
 import org.junit.jupiter.api.Test;
 
 import com.rfJVUtils.beans.financial.core.Discount;
+import com.rfJVUtils.beans.financial.core.Tax;
 import com.rfJVUtils.beans.financial.invoice.Invoice;
 import com.rfJVUtils.beans.financial.invoice.InvoiceLine;
 import com.rfJVUtils.constants.financial.IRFUtilsFinancialConstants;
@@ -23,7 +24,7 @@ public class RFUtilsInvoiceTest {
 	@Test
 	public void calculateInvoice() throws RFInvoiceExpcetion {
 
-		BigDecimal desireResult = new BigDecimal("2560.25");
+		BigDecimal desireResult = new BigDecimal("3097.90");
 
 		Invoice invoice = new Invoice();
 
@@ -39,14 +40,19 @@ public class RFUtilsInvoiceTest {
 		discount.setPercentage(new BigDecimal("0.02"));
 		invoiceLine.addDiscount(discount);
 
+		Tax tax = new Tax();
+		tax.setPercentage(new BigDecimal("0.21"));
+
+		invoiceLine.addTax(tax);
+
 		invoice.addInvoiceLine(invoiceLine);
 
 		UtilsInvoice.calculateInvoice(invoice, true);
 
-		System.out.println("Invoice amountInvoiceWithoutTaxesAndDiscount "
-				+ invoice.getAmountInvoiceWithoutTaxesAndDiscount().toPlainString());
+		System.out.println("Invoice amountInvoiceWithoutTaxesAndDiscountHeader "
+				+ invoice.getAmountInvoiceWithoutTaxesAndDiscountHeader().toPlainString());
 
-		assertTrue(invoice.getAmountInvoiceWithoutTaxesAndDiscount()
+		assertTrue(invoice.getAmountInvoiceWithoutTaxesAndDiscountHeader()
 				.setScale(2, IRFUtilsFinancialConstants.DEFAULT_ROUNDING_MODE).compareTo(desireResult) == 0);
 
 	}

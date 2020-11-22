@@ -1,11 +1,13 @@
 package com.rfJVUtils.utils;
 
 import java.math.BigDecimal;
+import java.util.Date;
 import java.util.List;
 
 import org.slf4j.Logger;
 
 import com.rfJVUtils.beans.financial.core.Discount;
+import com.rfJVUtils.beans.financial.core.Tax;
 import com.rfJVUtils.beans.financial.invoice.Invoice;
 import com.rfJVUtils.beans.financial.invoice.InvoiceLine;
 import com.rfJVUtils.constants.financial.EnumErrorCodesInvoice;
@@ -17,6 +19,11 @@ import com.rfJVUtils.exceptions.RFInvoiceExpcetion;
  * 
  * <ul>
  * <li>{@link #calculateInvoice(Invoice)}</li>
+ * <li>{@link #isValidDiscount(Discount)}</li>
+ * <li>{@link #isValidTax(Tax)}</li>
+ * <li>{@link #isValidInvoiceLine(InvoiceLine)}</li>
+ * <li>{@link #applyDiscountAmount(BigDecimal, Discount)}</li>
+ * <li>{@link #applyTaxAmount(BigDecimal, Tax)}</li>
  * <ul>
  * 
  * @author diego
@@ -44,10 +51,20 @@ public final class UtilsInvoice {
 	 * Method to know discount is valid
 	 * 
 	 * @param discount to check is valid
-	 * @return true if not null and has amount or percentaje
+	 * @return true if not null and has amount or percentage
 	 */
 	public static final boolean isValidDiscount(Discount discount) {
 		return discount != null && (discount.getAmount() != null || discount.getPercentage() != null);
+	}
+
+	/**
+	 * Method to know vtax is valid
+	 * 
+	 * @param discount to check is valid
+	 * @return true if not null and has share or percentage
+	 */
+	public static final boolean isValidTax(Tax tax) {
+		return tax != null && (tax.getPercentage() != null || tax.getShare() != null);
 	}
 
 	/**
@@ -75,6 +92,30 @@ public final class UtilsInvoice {
 	}
 
 	/**
+	 * Mhetod for apply tax amount
+	 * 
+	 * @param amount to apply tax
+	 * @param tax    to apply
+	 * @return amount with apply tax
+	 */
+	public static final BigDecimal applyTaxAmount(BigDecimal amount, Tax tax) {
+		amount = amount == null ? BigDecimal.ZERO : amount;
+
+		if (isValidTax(tax)) {
+
+			if (tax.getShare() != null) {
+				amount = amount.add(tax.getShare());
+			} else {
+				amount = amount
+						.add(amount.multiply(tax.getPercentage(), IRFUtilsFinancialConstants.DEFAULT_MATH_CONTEXT));
+			}
+
+		}
+
+		return amount;
+	}
+
+	/**
 	 * Method for calculate invoice line
 	 * 
 	 * @param invoiceLine to calculate
@@ -92,16 +133,24 @@ public final class UtilsInvoice {
 					.setScale(IRFUtilsFinancialConstants.DEFAULT_SCALE_TOTAL_AMOUNT,
 							IRFUtilsFinancialConstants.DEFAULT_ROUNDING_MODE);
 
-			// Find discounts apply amount
+			// Discounts apply amount
 			if (UtilsCollection.isNotEmpty(invoiceLine.getListDiscounts())) {
 				for (Discount discount : invoiceLine.getListDiscounts()) {
 					amountWithoutTaxes = applyDiscountAmount(amountWithoutTaxes, discount);
 				}
 			}
-			
-			// TODO apply taxes
 
-			amount = amountWithoutTaxes;
+			BigDecimal amountWithTaxes = amountWithoutTaxes;
+
+			// Taxes apply amount
+			if (UtilsCollection.isNotEmpty(invoiceLine.getListTaxes())) {
+				for (Tax tax : invoiceLine.getListTaxes()) {
+					amountWithTaxes = applyTaxAmount(amountWithTaxes, tax);
+				}
+			}
+
+			amount = amountWithTaxes;
+
 		}
 
 		return amount;
@@ -118,10 +167,13 @@ public final class UtilsInvoice {
 	public static void calculateInvoice(Invoice invoice, boolean throwErrorIfLineOrHeaderIsNotValid)
 			throws RFInvoiceExpcetion {
 		if (invoice != null) {
+
 			long time = System.currentTimeMillis();
 			if (LOGGER.isDebugEnabled()) {
 				LOGGER.debug("Start calculate invoice");
 			}
+
+			invoice.setLastDateExecuteCalculateInvoice(new Date());
 
 			BigDecimal amountInvoiceWithoutTaxesAndDiscount = BigDecimal.ZERO;
 
@@ -146,7 +198,7 @@ public final class UtilsInvoice {
 				}
 			}
 
-			invoice.setAmountInvoiceWithoutTaxesAndDiscount(amountInvoiceWithoutTaxesAndDiscount);
+			invoice.setAmountInvoiceWithoutTaxesAndDiscountHeader(amountInvoiceWithoutTaxesAndDiscount);
 
 			if (LOGGER.isDebugEnabled()) {
 				LOGGER.debug(
