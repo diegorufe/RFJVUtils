@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.rfJVUtils.beans.financial.core.Discount;
-import com.rfJVUtils.utils.UtilsCollection;
+import com.rfJVUtils.utils.commons.UtilsCollection;
 
 /**
  * Interface feature indicate has discounts

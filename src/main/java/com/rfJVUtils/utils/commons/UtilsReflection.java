@@ -1,4 +1,4 @@
-package com.rfJVUtils.utils;
+package com.rfJVUtils.utils.commons;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.ParameterizedType;

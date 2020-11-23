@@ -12,7 +12,7 @@ import com.rfJVUtils.beans.financial.invoice.Invoice;
 import com.rfJVUtils.beans.financial.invoice.InvoiceLine;
 import com.rfJVUtils.constants.financial.IRFUtilsFinancialConstants;
 import com.rfJVUtils.exceptions.RFInvoiceExpcetion;
-import com.rfJVUtils.utils.UtilsInvoice;
+import com.rfJVUtils.utils.financial.UtilsInvoice;
 
 /**
  * 

@@ -1,4 +1,4 @@
-package com.rfJVUtils.utils;
+package com.rfJVUtils.utils.financial;
 
 import java.math.BigDecimal;
 import java.util.Date;
@@ -13,6 +13,8 @@ import com.rfJVUtils.beans.financial.invoice.InvoiceLine;
 import com.rfJVUtils.constants.financial.EnumErrorCodesInvoice;
 import com.rfJVUtils.constants.financial.IRFUtilsFinancialConstants;
 import com.rfJVUtils.exceptions.RFInvoiceExpcetion;
+import com.rfJVUtils.utils.commons.UtilsCollection;
+import com.rfJVUtils.utils.commons.UtilsLog;
 
 /**
  * Class utilities for invoice

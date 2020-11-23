@@ -1,4 +1,4 @@
-package com.rfJVUtils.utils;
+package com.rfJVUtils.utils.commons;
 
 /**
  * Class utilities for chars

@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import com.rfJVUtils.utils.UtilsCollection;
+import com.rfJVUtils.utils.commons.UtilsCollection;
 
 /**
  * Class for store data invoce for calculate this

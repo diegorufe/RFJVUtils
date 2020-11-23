@@ -1,4 +1,4 @@
-package com.rfJVUtils.utils;
+package com.rfJVUtils.utils.financial;
 
 import java.math.BigDecimal;
 import java.math.MathContext;
@@ -9,6 +9,7 @@ import org.slf4j.Logger;
 import com.rfJVUtils.constants.core.EnumErrorCodes;
 import com.rfJVUtils.constants.financial.IRFUtilsFinancialConstants;
 import com.rfJVUtils.exceptions.RFFinancialException;
+import com.rfJVUtils.utils.commons.UtilsLog;
 
 /**
  * Class utilities for financial operations

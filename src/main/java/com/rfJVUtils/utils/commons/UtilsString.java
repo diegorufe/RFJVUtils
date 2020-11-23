@@ -1,4 +1,4 @@
-package com.rfJVUtils.utils;
+package com.rfJVUtils.utils.commons;
 
 import java.util.Random;
 import java.util.UUID;
