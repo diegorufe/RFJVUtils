@@ -52,11 +52,20 @@ import java.util.UUID;
  * <li>{@link #SPLIT_DOT}</li>
  * </ul>
  * 
+ * <p>
+ * Hex
+ * <ul>
+ * <li>{@link #byteArrayToHexString(byte[])}</li>
+ * <li>{@link #hexStringToByteArray(String)}</li>
+ * </ul>
+ * 
  * @author diego
  *
  */
 public final class UtilsString {
-	
+
+	private static final String FORMAT_HEX_STRING = "%02x";
+
 	/**
 	 * Empty -> " "
 	 */
@@ -213,5 +222,41 @@ public final class UtilsString {
 	 */
 	public static final String uniqueId() {
 		return UUID.randomUUID().toString().concat(UUID.randomUUID().toString());
+	}
+
+	/**
+	 * Method for convert byte array to hex string
+	 * 
+	 * @param byteArray to covert
+	 * @return hex string from byte array
+	 */
+	public static String byteArrayToHexString(byte[] byteArray) {
+		if (byteArray != null && byteArray.length > 0) {
+			StringBuilder result = new StringBuilder();
+			for (byte byteToConvert : byteArray) {
+				result.append(String.format(FORMAT_HEX_STRING, byteToConvert));
+			}
+			return result.toString();
+		}
+		return null;
+	}
+
+	/**
+	 * Method to conver hex string to byte array
+	 * 
+	 * @param hexString to convert
+	 * @return byte array from hex string
+	 */
+	public static byte[] hexStringToByteArray(String hexString) {
+		byte[] byteArrayForHexString = null;
+		if (UtilsString.isNotEmpty(hexString)) {
+			int len = hexString.length();
+			byteArrayForHexString = new byte[len / 2];
+			for (int i = 0; i < len; i += 2) {
+				byteArrayForHexString[i / 2] = (byte) ((Character.digit(hexString.charAt(i), 16) << 4)
+						+ Character.digit(hexString.charAt(i + 1), 16));
+			}
+		}
+		return byteArrayForHexString;
 	}
 }
