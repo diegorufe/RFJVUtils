@@ -15,12 +15,15 @@ public class RFException extends Exception {
 	private int errorCode;
 
 	public RFException(int errorCode) {
-		super();
-		this.errorCode = errorCode;
+		this(errorCode, null);
 	}
 
 	public RFException(int errorCode, String message) {
-		super(message);
+		this(errorCode, message, null);
+	}
+
+	public RFException(int errorCode, String message, Exception exception) {
+		super(message, exception);
 		this.errorCode = errorCode;
 	}
 
