@@ -1,12 +1,14 @@
 package com.rfJVUtils.constants.financial;
 
+import com.rfJVUtils.exceptions.IBaseExceptionErrorCodeDefinition;
+
 /**
  * Error codes for invoice operations
  * 
  * @author diego
  *
  */
-public enum EnumErrorCodesInvoice {
+public enum EnumErrorCodesInvoice implements IBaseExceptionErrorCodeDefinition {
 
 	UNDEFINED(-1),
 
@@ -47,6 +49,11 @@ public enum EnumErrorCodesInvoice {
 			}
 		}
 		return enumErrorCodes;
+	}
+
+	@Override
+	public String getType() {
+		return EnumErrorCodesInvoice.class.getSimpleName();
 	}
 
 }

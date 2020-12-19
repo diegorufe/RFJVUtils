@@ -1,12 +1,14 @@
 package com.rfJVUtils.constants.core;
 
+import com.rfJVUtils.exceptions.IBaseExceptionErrorCodeDefinition;
+
 /**
  * Error codes for operations
  * 
  * @author diego
  *
  */
-public enum EnumErrorCodes {
+public enum EnumErrorCodes implements IBaseExceptionErrorCodeDefinition {
 
 	UNDEFINED(-1),
 
@@ -52,6 +54,11 @@ public enum EnumErrorCodes {
 			}
 		}
 		return enumErrorCodes;
+	}
+
+	@Override
+	public String getType() {
+		return EnumErrorCodes.class.getSimpleName();
 	}
 
 }

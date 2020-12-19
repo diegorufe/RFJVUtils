@@ -13,12 +13,12 @@ public class RFFinancialException extends RFException {
 	 */
 	private static final long serialVersionUID = -4728414523437010498L;
 
-	public RFFinancialException(int errorCode) {
-		super(errorCode);
+	public RFFinancialException(IBaseExceptionErrorCodeDefinition baseExceptionErrorCodeDefinition) {
+		super(baseExceptionErrorCodeDefinition);
 	}
 
-	public RFFinancialException(int errorCode, String message) {
-		super(errorCode, message);
+	public RFFinancialException(IBaseExceptionErrorCodeDefinition baseExceptionErrorCodeDefinition, String message) {
+		super(baseExceptionErrorCodeDefinition, message);
 	}
 
 }

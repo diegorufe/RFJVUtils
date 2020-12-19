@@ -192,7 +192,7 @@ public final class UtilsInvoice {
 								.add(calculateInvoiceLine(invoiceLine));
 
 					} else if (throwErrorIfLineOrHeaderIsNotValid) {
-						throw new RFInvoiceExpcetion(EnumErrorCodesInvoice.LINE_INVOICE_IS_NOT_VALID.getCode(),
+						throw new RFInvoiceExpcetion(EnumErrorCodesInvoice.LINE_INVOICE_IS_NOT_VALID,
 								"Line " + lineNo + " is not valid");
 					}
 
