@@ -1,5 +1,6 @@
 package com.rfJVUtils.utils.commons;
 
+import java.text.Normalizer;
 import java.util.Random;
 import java.util.UUID;
 
@@ -59,12 +60,27 @@ import java.util.UUID;
  * <li>{@link #hexStringToByteArray(String)}</li>
  * </ul>
  * 
+ * <p>
+ * Normalize
+ * <ul>
+ * <li>{@link #normalize(String)}</li>
+ * </ul>
+ * 
  * @author diego
  *
  */
 public final class UtilsString {
 
+	/**
+	 * Format regex hex string
+	 */
 	private static final String FORMAT_HEX_STRING = "%02x";
+
+	/**
+	 * String to use replace regex normalize. This expression represents the UTF-8
+	 * characters between U+0300 and U+036F
+	 */
+	private static final String REGEX_REPLACE_NORMALIZE = "[\\p{InCombiningDiacriticalMarks}]";
 
 	/**
 	 * Empty -> " "
@@ -258,5 +274,21 @@ public final class UtilsString {
 			}
 		}
 		return byteArrayForHexString;
+	}
+
+	/**
+	 * Method for normalize string. Only normalize if text is not null else return
+	 * null
+	 * 
+	 * @param text to normalize
+	 * @return text normalized or null if text param is null
+	 */
+	public static final String normalize(String text) {
+		String textNormalized = null;
+		if (text != null) {
+			textNormalized = Normalizer.normalize(text, Normalizer.Form.NFD);
+			textNormalized = textNormalized.replaceAll(REGEX_REPLACE_NORMALIZE, EMPTY);
+		}
+		return textNormalized;
 	}
 }

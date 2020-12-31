@@ -1,6 +1,7 @@
 package com.rfJVUtils.utils.commons;
 
 import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -63,9 +64,11 @@ public final class UtilsReflection {
 		if (data != null && UtilsString.isNotEmpty(fieldName)) {
 			try {
 				Field field = data.getClass().getDeclaredField(fieldName);
-				value = field.getType().getClass().newInstance();
+				// This is deprecated
+				//field.getType().getClass().newInstance();
+				value = field.getType().getClass().getDeclaredConstructor().newInstance();
 			} catch (NoSuchFieldException | SecurityException | IllegalArgumentException | IllegalAccessException
-					| InstantiationException ignored) {
+					| InstantiationException | InvocationTargetException | NoSuchMethodException ignored) {
 				if (classData.getSuperclass() != Object.class) {
 					value = instaceValueField(data, data.getClass().getSuperclass(), fieldName);
 				}

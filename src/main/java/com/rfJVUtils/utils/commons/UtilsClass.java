@@ -68,9 +68,8 @@ public final class UtilsClass {
 			File directory = null;
 			try {
 				directory = new File(Thread.currentThread().getContextClassLoader()
-						.getResource(packageName.replace('.', '/')).getFile());
+						.getResource(packageName.replace(UtilsChar.DOT, '/')).getFile());
 			} catch (NullPointerException x) {
-				System.out.println("Nullpointer");
 				throw new ClassNotFoundException(packageName + " does not appear to be a valid package");
 			}
 			if (directory.exists()) {
@@ -80,7 +79,8 @@ public final class UtilsClass {
 					// we are only interested in .class files
 					if (files[i].endsWith(".class")) {
 						// removes the .class extension
-						classes.add(Class.forName(packageName + '.' + files[i].substring(0, files[i].length() - 6)));
+						classes.add(Class
+								.forName(packageName + UtilsChar.DOT + files[i].substring(0, files[i].length() - 6)));
 					}
 				}
 			} else {

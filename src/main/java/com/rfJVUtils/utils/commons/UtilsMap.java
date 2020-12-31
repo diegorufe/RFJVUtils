@@ -6,7 +6,7 @@ import java.util.Map;
  * Class utilties for map
  * 
  * <p>
- * Method to knwo size map
+ * Method to know size map
  * 
  * <ul>
  * 

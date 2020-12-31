@@ -2,6 +2,8 @@ package com.rfJVUtils.utils.commons;
 
 import java.math.BigDecimal;
 
+import org.slf4j.Logger;
+
 /**
  * Class utilities BigDecimal
  * 
@@ -14,19 +16,34 @@ import java.math.BigDecimal;
  */
 public final class UtilsBigDecimal {
 
+	private static final Logger LOGGER = UtilsLog.getLogger(UtilsBigDecimal.class.getSimpleName());
+
 	private UtilsBigDecimal() {
 
 	}
 
 	/**
-	 * Method for get number of places decimal in BigDecimal
+	 * Method for get number of places decimal in BigDecimal. If bigDecimal is null
+	 * return -1. If dont find place of decimal return -1
 	 * 
 	 * @param bigDecimal is bigdecimal to get number of places decimal
 	 * @return number of places decimal
 	 */
 	public static final int numberOfDecimalPlaces(BigDecimal bigDecimal) {
-		String string = bigDecimal.stripTrailingZeros().toPlainString();
-		int index = string.indexOf(".");
-		return index < 0 ? 0 : string.length() - index - 1;
+		int numberOfplacesDecimal = -1;
+		if (bigDecimal != null) {
+			String bigDecimalString = bigDecimal.stripTrailingZeros().toPlainString();
+			if (LOGGER.isTraceEnabled()) {
+				LOGGER.trace("bigDecimal param to string with zeros is " + bigDecimalString);
+			}
+			int index = bigDecimalString.indexOf(UtilsChar.DOT);
+			if (LOGGER.isTraceEnabled()) {
+				LOGGER.trace("bigDecimal param index dot is " + index);
+			}
+			numberOfplacesDecimal = index < 0 ? -1 : bigDecimalString.length() - index - 1;
+		} else if (LOGGER.isTraceEnabled()) {
+			LOGGER.trace("bigDecimal param is null");
+		}
+		return numberOfplacesDecimal;
 	}
 }
