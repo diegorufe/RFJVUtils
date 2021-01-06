@@ -6,6 +6,9 @@ import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
+
+import org.reflections.Reflections;
 
 /**
  * Utilities for reflection
@@ -17,6 +20,7 @@ import java.util.List;
  * <li>{@link #setValueField(Object, Class, String, Object)}</li>
  * <li>{@link #instaceValueField(Object, Class, String)}</li>
  * <li>{@link #getListDeclaredFields(Class)}</li>
+ * <li>{@link #findAllClassesByAnnotation(String, Class)}</li>
  * </ul>
  * 
  * @author diego
@@ -65,7 +69,7 @@ public final class UtilsReflection {
 			try {
 				Field field = data.getClass().getDeclaredField(fieldName);
 				// This is deprecated
-				//field.getType().getClass().newInstance();
+				// field.getType().getClass().newInstance();
 				value = field.getType().getClass().getDeclaredConstructor().newInstance();
 			} catch (NoSuchFieldException | SecurityException | IllegalArgumentException | IllegalAccessException
 					| InstantiationException | InvocationTargetException | NoSuchMethodException ignored) {
@@ -157,5 +161,24 @@ public final class UtilsReflection {
 		}
 
 		return result;
+	}
+
+	/**
+	 * Method for find all classes by annotation
+	 * 
+	 * @param packageSearch   if is null find in all packages
+	 * @param classAnnotation if is null dont find any
+	 * @return all classes found by class annotation. Can be null
+	 */
+	public static Set<Class<?>> findAllClassesByAnnotation(String packageSearch, Class classAnnotation) {
+		Set<Class<?>> collectionClasses = null;
+		if (packageSearch == null) {
+			packageSearch = "";
+		}
+		if (classAnnotation != null) {
+			Reflections reflections = new Reflections(packageSearch);
+			collectionClasses = reflections.getTypesAnnotatedWith(classAnnotation);
+		}
+		return collectionClasses;
 	}
 }
