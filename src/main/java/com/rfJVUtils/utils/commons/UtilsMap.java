@@ -63,7 +63,12 @@ public class UtilsMap {
 			for (Map<K, V> mapToMerge : arrayMapMerge) {
 				if (mapToMerge != null) {
 					for (K keyMap : mapToMerge.keySet()) {
-						mapResultMerged.put(keyMap, mapToMerge.get(keyMap));
+						// Chekc map dont contains key for prevent override in external map params for
+						// example in rest request. In this case send mapParams context in firts place
+						// and second mapParams (request) in sencond place
+						if (!mapResultMerged.containsKey(keyMap)) {
+							mapResultMerged.put(keyMap, mapToMerge.get(keyMap));
+						}
 					}
 				}
 			}
