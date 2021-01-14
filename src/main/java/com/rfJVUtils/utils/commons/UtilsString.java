@@ -5,7 +5,7 @@ import java.util.Random;
 import java.util.UUID;
 
 /**
- * Class utilites for String
+ * Class utilities for String
  * 
  * <p>
  * Method for pad
@@ -18,7 +18,9 @@ import java.util.UUID;
  * Method for check size
  * <ul>
  * <li>{@link #isEmpty(String)}</li>
+ * <li>{@link #isEmpty(String, boolean)}</li>
  * <li>{@link #isNotEmpty(String)}</li>
+ * <li>{@link #isNotEmpty(String, boolean)}</li>
  * </ul>
  * 
  * <p>
@@ -148,30 +150,58 @@ public final class UtilsString {
 	}
 
 	/**
-	 * Method to know value is emtpy
+	 * Method to know value is empty. Check value is not null and not empty with
+	 * trim java generic method
 	 * 
 	 * @param value to check
 	 * @return true if null or empty false if not
 	 */
 	public static final boolean isEmpty(String value) {
-		return value == null || value.trim().isEmpty();
+		return UtilsString.isEmpty(value, true);
 	}
 
 	/**
-	 * Method to know value is not emtpy
+	 * Method to know value is empty. Check value is not null if pass true checkNull
+	 * and not empty with trim java generic method
+	 * 
+	 * @param value     to check
+	 * @param checkNull if is true check string is null in this case is empty if is
+	 *                  null. If value is null and dont check null maybe throw null
+	 *                  pointer exception
+	 * @return true if null or empty false if not
+	 */
+	public static final boolean isEmpty(String value, boolean checkNull) {
+		return (checkNull && value == null) || value.trim().isEmpty();
+	}
+
+	/**
+	 * Method to know value is not empty. In this method check value is null
 	 * 
 	 * @param value to check
 	 * @return true if value is not null and not empty, false if not
 	 */
 	public static final boolean isNotEmpty(String value) {
-		return !UtilsString.isEmpty(value);
+		return !UtilsString.isNotEmpty(value, true);
 	}
 
 	/**
-	 * Method for generate ramdom string
+	 * Method to know value is not empty
 	 * 
-	 * @param targetStringLength to generate ramdon string
-	 * @return ramdom string generated
+	 * @param value     to check
+	 * @param checkNull if is true check string is null in this case is empty if is
+	 *                  null. If value is null and dont check null maybe throw null
+	 *                  pointer exception
+	 * @return true if value is not null and not empty, false if not
+	 */
+	public static final boolean isNotEmpty(String value, boolean checkNull) {
+		return !UtilsString.isEmpty(value, checkNull);
+	}
+
+	/**
+	 * Method for generate random string
+	 * 
+	 * @param targetStringLength to generate random string
+	 * @return random string generated
 	 */
 	public static final String ramdomString(int targetStringLength) {
 		int leftLimit = 97; // letter 'a'
