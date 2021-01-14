@@ -61,8 +61,10 @@ public class UtilsMap {
 		Map<K, V> mapResultMerged = new LinkedHashMap<K, V>();
 		if (UtilsCollection.isArrayNotEmpty(arrayMapMerge)) {
 			for (Map<K, V> mapToMerge : arrayMapMerge) {
-				for (K keyMap : mapToMerge.keySet()) {
-					mapResultMerged.put(keyMap, mapToMerge.get(keyMap));
+				if (mapToMerge != null) {
+					for (K keyMap : mapToMerge.keySet()) {
+						mapResultMerged.put(keyMap, mapToMerge.get(keyMap));
+					}
 				}
 			}
 		}
