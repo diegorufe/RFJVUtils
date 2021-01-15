@@ -181,7 +181,7 @@ public final class UtilsString {
 	 * @return true if value is not null and not empty, false if not
 	 */
 	public static final boolean isNotEmpty(String value) {
-		return !UtilsString.isNotEmpty(value, true);
+		return !UtilsString.isEmpty(value, true);
 	}
 
 	/**
