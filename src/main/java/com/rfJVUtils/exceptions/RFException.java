@@ -1,7 +1,7 @@
 package com.rfJVUtils.exceptions;
 
 /**
- * Exception for financial utils
+ * Base exception
  * 
  * @author diego
  *

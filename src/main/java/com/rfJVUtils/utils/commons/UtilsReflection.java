@@ -9,6 +9,8 @@ import java.util.List;
 import java.util.Set;
 
 import org.reflections.Reflections;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Utilities for reflection
@@ -27,6 +29,8 @@ import org.reflections.Reflections;
  *
  */
 public final class UtilsReflection {
+
+	private static final Logger LOGGER = LoggerFactory.getLogger(UtilsReflection.class);
 
 	private UtilsReflection() {
 
@@ -127,6 +131,10 @@ public final class UtilsReflection {
 				if (classData.getSuperclass() != Object.class) {
 					setValueField(data, data.getClass().getSuperclass(), fieldName, value);
 				}
+			} catch (Exception exception) {
+				LOGGER.error(
+						"Error on setValueField. Field name " + fieldName + ", classData " + classData.getSimpleName());
+				LOGGER.error(exception.getLocalizedMessage(), exception);
 			}
 		}
 	}
