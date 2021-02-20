@@ -26,6 +26,16 @@ public enum EnumErrorCodes implements IBaseExceptionErrorCodeDefinition {
 	 * Code for division by zero
 	 */
 	ARITEMICAL_EXCEPTION_DIVISION_BY_ZERO(0xE0000003),
+	
+	/**
+	 * Resource bundle file name is null or empty
+	 */
+	RESOURCE_BUNDLE_FILE_NAME_IS_NULL_OR_EMPTY(0xE0000004),
+	
+	/**
+	 * Class not found exception
+	 */
+	CLASS_NOT_FOUND(0xE0000005),
 
 	;
 

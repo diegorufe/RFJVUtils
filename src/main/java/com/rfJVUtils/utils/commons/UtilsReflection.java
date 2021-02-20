@@ -131,10 +131,10 @@ public final class UtilsReflection {
 				if (classData.getSuperclass() != Object.class) {
 					setValueField(data, data.getClass().getSuperclass(), fieldName, value);
 				}
-			} catch (Exception exception) {
+			} catch (Exception ignored) {
 				LOGGER.error(
 						"Error on setValueField. Field name " + fieldName + ", classData " + classData.getSimpleName());
-				LOGGER.error(exception.getLocalizedMessage(), exception);
+				LOGGER.error(ignored.getLocalizedMessage(), ignored);
 			}
 		}
 	}

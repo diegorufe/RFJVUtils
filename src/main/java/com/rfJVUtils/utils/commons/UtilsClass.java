@@ -3,6 +3,10 @@ package com.rfJVUtils.utils.commons;
 import java.io.File;
 import java.util.ArrayList;
 
+import com.rfJVUtils.constants.core.EnumErrorCodes;
+import com.rfJVUtils.exceptions.RFException;
+import com.rfJVUtils.resourceBundle.factory.RFResourceBundleFactory;
+
 /**
  * Utilities for class
  * 
@@ -28,17 +32,19 @@ public final class UtilsClass {
 	 * 
 	 * @param name for class to load
 	 * @return class for name
-	 * @throws ClassNotFoundException
+	 * @throws RFException if class not found
 	 */
 	@SuppressWarnings("rawtypes")
-	public static Class loadClassForName(String name) throws ClassNotFoundException {
+	public static Class loadClassForName(String name) throws RFException {
 		try {
 			return Class.forName(name, false, UtilsClass.class.getClassLoader());
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException firtExpcetionClassNotFound) {
 			try {
 				return Class.forName(name, false, getContextClassLoader());
-			} catch (ClassNotFoundException e2) {
-				throw e2;
+			} catch (ClassNotFoundException exception) {
+				throw new RFException(EnumErrorCodes.CLASS_NOT_FOUND,
+						RFResourceBundleFactory.getInstance().translate(null, "rf_error_classNotFoundExpcetion"),
+						exception);
 			}
 		}
 	}
@@ -58,43 +64,47 @@ public final class UtilsClass {
 	 * Method for get all class from package
 	 * 
 	 * @param packageName to get all classes
+	 * @throws RFException if class not found
 	 * @return array for classes inside package name
 	 */
 	@SuppressWarnings({ "rawtypes", "unchecked" })
-	public final static Class[] getAllClasses(String packageName) {
+	public final static Class[] getAllClasses(String packageName) throws RFException {
+
+		ArrayList classes = new ArrayList();
+		// Get a File object for the package
+		File directory = null;
 		try {
-			ArrayList classes = new ArrayList();
-			// Get a File object for the package
-			File directory = null;
-			try {
-				directory = new File(Thread.currentThread().getContextClassLoader()
-						.getResource(packageName.replace(UtilsChar.DOT, '/')).getFile());
-			} catch (NullPointerException x) {
-				throw new ClassNotFoundException(packageName + " does not appear to be a valid package");
-			}
-			if (directory.exists()) {
-				// Get the list of the files contained in the package
-				String[] files = directory.list();
-				for (int i = 0; i < files.length; i++) {
-					// we are only interested in .class files
-					if (files[i].endsWith(".class")) {
-						// removes the .class extension
+			directory = new File(Thread.currentThread().getContextClassLoader()
+					.getResource(packageName.replace(UtilsChar.DOT, '/')).getFile());
+		} catch (NullPointerException exception) {
+			throw new RFException(EnumErrorCodes.CLASS_NOT_FOUND,
+					RFResourceBundleFactory.getInstance().translate(null, "rf_error_classNotFoundExpcetion"),
+					exception);
+		}
+		if (directory.exists()) {
+			// Get the list of the files contained in the package
+			String[] files = directory.list();
+			for (int i = 0; i < files.length; i++) {
+				// we are only interested in .class files
+				if (files[i].endsWith(".class")) {
+					// removes the .class extension
+					try {
 						classes.add(Class
 								.forName(packageName + UtilsChar.DOT + files[i].substring(0, files[i].length() - 6)));
+					} catch (ClassNotFoundException exception) {
+						throw new RFException(EnumErrorCodes.CLASS_NOT_FOUND, RFResourceBundleFactory.getInstance()
+								.translate(null, "rf_error_classNotFoundExpcetion"), exception);
 					}
 				}
-			} else {
-				System.out.println("Directory does not exist");
-				throw new ClassNotFoundException(packageName + " does not appear to be a valid package");
 			}
-			Class[] classesA = new Class[classes.size()];
-			classes.toArray(classesA);
-
-			return classesA;
-
-		} catch (Exception e) {
-			e.printStackTrace();
+		} else {
+			throw new RFException(EnumErrorCodes.CLASS_NOT_FOUND,
+					RFResourceBundleFactory.getInstance().translate(null, "rf_error_classNotFoundExpcetion"));
 		}
-		return null;
+		Class[] classesA = new Class[classes.size()];
+		classes.toArray(classesA);
+
+		return classesA;
+
 	}
 }
