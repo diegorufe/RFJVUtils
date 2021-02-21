@@ -53,6 +53,7 @@ import java.util.UUID;
  * <li>{@link #DOT}</li>
  * <li>{@link #COMA}</li>
  * <li>{@link #SPLIT_DOT}</li>
+ * <li>{@link #BREAK_LINE}</li>
  * </ul>
  * 
  * <p>
@@ -122,6 +123,11 @@ public final class UtilsString {
 	 * Split dot -> "\\."
 	 */
 	public static final String SPLIT_DOT = "\\" + DOT;
+	
+	/**
+	 * Break line
+	 */
+	public static final String BREAK_LINE = "\n";
 
 	private UtilsString() {
 
