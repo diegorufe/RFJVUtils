@@ -13,6 +13,11 @@ import java.util.Collection;
  * <li>{@link #isArrayEmpty(Object[])}</li>
  * <li>{@link #isArrayNotEmpty(Object[])}</li>
  * </ul>
+ * <p>
+ * Check contains values
+ * <ul>
+ * <li>{@link #contains(Object[], Object)}</li>
+ * </ul>
  * 
  * @author diego
  *
@@ -68,5 +73,26 @@ public final class UtilsCollection {
 	 */
 	public static final <T> boolean isArrayNotEmpty(T[] array) {
 		return !UtilsCollection.isArrayEmpty(array);
+	}
+
+	/**
+	 * Method to check array contains object
+	 * 
+	 * @param array  to check contains object
+	 * @param object to check is inside array
+	 * @return true if object inside array
+	 */
+	public static boolean contains(Object[] array, Object object) {
+		if (array == null || array.length == 0) {
+			return false;
+		}
+
+		for (int i = 0; i < array.length; i++) {
+			if (array[i].equals(object)) {
+				return true;
+			}
+		}
+
+		return false;
 	}
 }

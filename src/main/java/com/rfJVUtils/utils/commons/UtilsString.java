@@ -21,6 +21,8 @@ import java.util.UUID;
  * <li>{@link #isEmpty(String, boolean)}</li>
  * <li>{@link #isNotEmpty(String)}</li>
  * <li>{@link #isNotEmpty(String, boolean)}</li>
+ * <li>{@link #isBlank(String)}</li>
+ * <li>{@link #isNotBlank(String)}</li>
  * </ul>
  * 
  * <p>
@@ -123,7 +125,7 @@ public final class UtilsString {
 	 * Split dot -> "\\."
 	 */
 	public static final String SPLIT_DOT = "\\" + DOT;
-	
+
 	/**
 	 * Break line
 	 */
@@ -326,5 +328,41 @@ public final class UtilsString {
 			textNormalized = textNormalized.replaceAll(REGEX_REPLACE_NORMALIZE, EMPTY);
 		}
 		return textNormalized;
+	}
+
+	/**
+	 * Method to check value is blank
+	 * 
+	 * @param str to check
+	 * @return true if value is null or length is zero or all values for text is
+	 *         whitespace
+	 */
+	public static boolean isBlank(String str) {
+		if (str == null) {
+			return true;
+		}
+
+		int strLen = str.length();
+		if (strLen == 0) {
+			return true;
+		}
+
+		for (int i = 0; i < strLen; i++) {
+			if (!Character.isWhitespace(str.charAt(i))) {
+				return false;
+			}
+		}
+		return true;
+	}
+
+	/**
+	 * Method to check value is not blank
+	 * 
+	 * @param str to check
+	 * @return true if value is not null and length greater than zero and one value
+	 *         of text is not whitespace
+	 */
+	public static boolean isNotBlank(String str) {
+		return !UtilsString.isNotBlank(str);
 	}
 }
