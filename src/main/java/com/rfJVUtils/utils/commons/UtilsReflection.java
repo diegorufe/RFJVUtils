@@ -78,7 +78,7 @@ public final class UtilsReflection {
 			} catch (NoSuchFieldException | SecurityException | IllegalArgumentException | IllegalAccessException
 					| InstantiationException | InvocationTargetException | NoSuchMethodException ignored) {
 				if (classData.getSuperclass() != Object.class) {
-					value = instaceValueField(data, data.getClass().getSuperclass(), fieldName);
+					value = instaceValueField(data, classData.getSuperclass(), fieldName);
 				}
 			}
 		}
@@ -104,7 +104,7 @@ public final class UtilsReflection {
 			} catch (NoSuchFieldException | SecurityException | IllegalArgumentException
 					| IllegalAccessException ignored) {
 				if (classData.getSuperclass() != Object.class) {
-					value = getValueField(data, data.getClass().getSuperclass(), fieldName);
+					value = getValueField(data, classData.getSuperclass(), fieldName);
 				}
 			}
 		}
@@ -129,7 +129,7 @@ public final class UtilsReflection {
 			} catch (NoSuchFieldException | SecurityException | IllegalArgumentException
 					| IllegalAccessException ignored) {
 				if (classData.getSuperclass() != Object.class) {
-					setValueField(data, data.getClass().getSuperclass(), fieldName, value);
+					setValueField(data, classData.getSuperclass(), fieldName, value);
 				}
 			} catch (Exception ignored) {
 				LOGGER.error(
