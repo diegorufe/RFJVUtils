@@ -36,6 +36,11 @@ public enum EnumErrorCodes implements IBaseExceptionErrorCodeDefinition {
 	 * Class not found exception
 	 */
 	CLASS_NOT_FOUND(0xE0000005),
+	
+	/**
+	 * Field dont accesible value 
+	 */
+	FIELD_DONT_ACCESSIBLE_VALUE(0xE0000006),
 
 	;
 

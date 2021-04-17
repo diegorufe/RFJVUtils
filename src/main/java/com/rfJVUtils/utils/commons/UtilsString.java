@@ -363,6 +363,6 @@ public final class UtilsString {
 	 *         of text is not whitespace
 	 */
 	public static boolean isNotBlank(String str) {
-		return !UtilsString.isNotBlank(str);
+		return !UtilsString.isBlank(str);
 	}
 }
