@@ -10,87 +10,94 @@ import com.rfJVUtils.utils.commons.UtilsCollection;
 
 /**
  * Class for store data invoce for calculate this
- * 
+ *
  * <ul>
  * <li>{@link #addInvoiceLine(InvoiceLine)}</li>
  * <li>{@link #clearInvoice()}</li>
  * </ul>
- * 
- * @author diego
  *
+ * @author diego
  */
 public class Invoice implements Serializable {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 2736258219852334166L;
+    /**
+     *
+     */
+    private static final long serialVersionUID = 2736258219852334166L;
 
-	private InvoiceHeader invoiceHeader;
-	private List<InvoiceLine> listInvoiceLines;
-	private BigDecimal amountInvoiceWithoutTaxesAndDiscountHeader;
-	private Date lastDateExecuteCalculateInvoice;
+    /**
+     * Header for invoice
+     */
+    private InvoiceHeader invoiceHeader;
 
-	public Invoice() {
+    /**
+     * Lines for invoice
+     */
+    private List<InvoiceLine> listInvoiceLines;
 
-	}
+    private BigDecimal amountInvoiceWithoutTaxesAndDiscountHeader;
+    private Date lastDateExecuteCalculateInvoice;
 
-	/**
-	 * Method for add invoice line
-	 * 
-	 * @param invoiceLine
-	 */
-	public void addInvoiceLine(InvoiceLine invoiceLine) {
-		if (invoiceLine != null) {
-			if (UtilsCollection.isEmpty(this.listInvoiceLines)) {
-				this.listInvoiceLines = new ArrayList<InvoiceLine>();
-			}
-			this.listInvoiceLines.add(invoiceLine);
-		}
-	}
+    public Invoice() {
 
-	public InvoiceHeader getInvoiceHeader() {
-		return invoiceHeader;
-	}
+    }
 
-	public void setInvoiceHeader(InvoiceHeader invoiceHeader) {
-		this.invoiceHeader = invoiceHeader;
-	}
+    /**
+     * Method for add invoice line
+     *
+     * @param invoiceLine to add. If invoice lines is null not added
+     */
+    public void addInvoiceLine(InvoiceLine invoiceLine) {
+        if (invoiceLine != null) {
+            if (UtilsCollection.isEmpty(this.listInvoiceLines)) {
+                this.listInvoiceLines = new ArrayList<InvoiceLine>();
+            }
+            this.listInvoiceLines.add(invoiceLine);
+        }
+    }
 
-	public List<InvoiceLine> getListInvoiceLines() {
-		return listInvoiceLines;
-	}
+    public InvoiceHeader getInvoiceHeader() {
+        return invoiceHeader;
+    }
 
-	public void setListInvoiceLines(List<InvoiceLine> listInvoiceLines) {
-		this.listInvoiceLines = listInvoiceLines;
-	}
+    public void setInvoiceHeader(InvoiceHeader invoiceHeader) {
+        this.invoiceHeader = invoiceHeader;
+    }
 
-	/**
-	 * Method for clear invoice
-	 */
-	public void clearInvoice() {
-		if (UtilsCollection.isNotEmpty(this.listInvoiceLines)) {
-			this.listInvoiceLines.clear();
-		}
-		this.invoiceHeader = null;
-		this.lastDateExecuteCalculateInvoice = null;
-		this.amountInvoiceWithoutTaxesAndDiscountHeader = null;
-	}
+    public List<InvoiceLine> getListInvoiceLines() {
+        return listInvoiceLines;
+    }
 
-	public Date getLastDateExecuteCalculateInvoice() {
-		return lastDateExecuteCalculateInvoice;
-	}
+    public void setListInvoiceLines(List<InvoiceLine> listInvoiceLines) {
+        this.listInvoiceLines = listInvoiceLines;
+    }
 
-	public void setLastDateExecuteCalculateInvoice(Date lastDateExecuteCalculateInvoice) {
-		this.lastDateExecuteCalculateInvoice = lastDateExecuteCalculateInvoice;
-	}
+    /**
+     * Method for clear invoice
+     */
+    public void clearInvoice() {
+        if (UtilsCollection.isNotEmpty(this.listInvoiceLines)) {
+            this.listInvoiceLines.clear();
+        }
+        this.invoiceHeader = null;
+        this.lastDateExecuteCalculateInvoice = null;
+        this.amountInvoiceWithoutTaxesAndDiscountHeader = null;
+    }
 
-	public BigDecimal getAmountInvoiceWithoutTaxesAndDiscountHeader() {
-		return amountInvoiceWithoutTaxesAndDiscountHeader;
-	}
+    public Date getLastDateExecuteCalculateInvoice() {
+        return lastDateExecuteCalculateInvoice;
+    }
 
-	public void setAmountInvoiceWithoutTaxesAndDiscountHeader(BigDecimal amountInvoiceWithoutTaxesAndDiscountHeader) {
-		this.amountInvoiceWithoutTaxesAndDiscountHeader = amountInvoiceWithoutTaxesAndDiscountHeader;
-	}
+    public void setLastDateExecuteCalculateInvoice(Date lastDateExecuteCalculateInvoice) {
+        this.lastDateExecuteCalculateInvoice = lastDateExecuteCalculateInvoice;
+    }
+
+    public BigDecimal getAmountInvoiceWithoutTaxesAndDiscountHeader() {
+        return amountInvoiceWithoutTaxesAndDiscountHeader;
+    }
+
+    public void setAmountInvoiceWithoutTaxesAndDiscountHeader(BigDecimal amountInvoiceWithoutTaxesAndDiscountHeader) {
+        this.amountInvoiceWithoutTaxesAndDiscountHeader = amountInvoiceWithoutTaxesAndDiscountHeader;
+    }
 
 }

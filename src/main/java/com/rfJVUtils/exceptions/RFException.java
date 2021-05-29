@@ -2,56 +2,67 @@ package com.rfJVUtils.exceptions;
 
 /**
  * Base exception
- * 
- * @author diego
  *
+ * @author diego
  */
 public class RFException extends Exception {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = -4728414523437010498L;
-	private int errorCode;
-	private String typeCodeErrorException;
-	private IBaseExceptionErrorCodeDefinition baseExceptionErrorCodeDefinition;
+    /**
+     *
+     */
+    private static final long serialVersionUID = -4728414523437010498L;
 
-	public RFException(IBaseExceptionErrorCodeDefinition baseExceptionErrorCodeDefinition) {
-		this(baseExceptionErrorCodeDefinition, null);
-	}
+    /**
+     * For exception
+     */
+    private int errorCode;
 
-	public RFException(IBaseExceptionErrorCodeDefinition baseExceptionErrorCodeDefinition, String message) {
-		this(baseExceptionErrorCodeDefinition, message, null);
-	}
+    /**
+     * For determine type error
+     */
+    private String typeCodeErrorException;
 
-	public RFException(IBaseExceptionErrorCodeDefinition baseExceptionErrorCodeDefinition, String message,
-			Exception exception) {
-		super(message, exception);
-		this.baseExceptionErrorCodeDefinition = baseExceptionErrorCodeDefinition;
-		if (baseExceptionErrorCodeDefinition != null) {
-			this.errorCode = baseExceptionErrorCodeDefinition.getCode();
-			this.typeCodeErrorException = baseExceptionErrorCodeDefinition.getType();
-		}
-	}
+    /***
+     * For add more information about exception
+     */
+    private final IBaseExceptionErrorCodeDefinition baseExceptionErrorCodeDefinition;
 
-	public int getErrorCode() {
-		return errorCode;
-	}
+    public RFException(IBaseExceptionErrorCodeDefinition baseExceptionErrorCodeDefinition) {
+        this(baseExceptionErrorCodeDefinition, null);
+    }
 
-	public void setErrorCode(int errorCode) {
-		this.errorCode = errorCode;
-	}
+    public RFException(IBaseExceptionErrorCodeDefinition baseExceptionErrorCodeDefinition, String message) {
+        this(baseExceptionErrorCodeDefinition, message, null);
+    }
 
-	public String getTypeCodeErrorException() {
-		return typeCodeErrorException;
-	}
+    public RFException(IBaseExceptionErrorCodeDefinition baseExceptionErrorCodeDefinition, String message,
+                       Exception exception) {
+        super(message, exception);
+        this.baseExceptionErrorCodeDefinition = baseExceptionErrorCodeDefinition;
+        if (baseExceptionErrorCodeDefinition != null) {
+            this.errorCode = baseExceptionErrorCodeDefinition.getCode();
+            this.typeCodeErrorException = baseExceptionErrorCodeDefinition.getType();
+        }
+    }
 
-	public void setTypeCodeErrorException(String typeCodeErrorException) {
-		this.typeCodeErrorException = typeCodeErrorException;
-	}
+    public int getErrorCode() {
+        return errorCode;
+    }
 
-	public IBaseExceptionErrorCodeDefinition getBaseExceptionErrorCodeDefinition() {
-		return baseExceptionErrorCodeDefinition;
-	}
+    public void setErrorCode(int errorCode) {
+        this.errorCode = errorCode;
+    }
+
+    public String getTypeCodeErrorException() {
+        return typeCodeErrorException;
+    }
+
+    public void setTypeCodeErrorException(String typeCodeErrorException) {
+        this.typeCodeErrorException = typeCodeErrorException;
+    }
+
+    public IBaseExceptionErrorCodeDefinition getBaseExceptionErrorCodeDefinition() {
+        return baseExceptionErrorCodeDefinition;
+    }
 
 }
